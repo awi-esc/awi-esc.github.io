@@ -1,0 +1,15 @@
+name: Nils Bochow           # required
+position: Postdoctoral Researcher          # required (string, OR see "linked position" below)
+bio: I am a postdoc working on modelling and understanding the Earth system using process-based and data-driven methods.
+photo: photo.webp             # optional; auto-detected if omitted
+order: 99                    # optional; lower = higher in list (default 99)
+start_date: 2026-01          # optional, YYYY-MM
+end_date:                    # optional, YYYY-MM — sets former-member status
+links:                       # all optional
+  github: NilsBochow
+  orcid: 0000-0003-4578-5780
+  scholar: 63nT4ukAAAAJ
+  website: https://nilsbochow.com/
+  email: contact@nilsbochow.com
+  linkedin: nils-bochow
+keywords: [climate science, tipping points, machine learning, modelling, ice sheets]   # optional
