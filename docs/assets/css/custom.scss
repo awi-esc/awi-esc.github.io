@@ -80,8 +80,20 @@ h2 { border-bottom: 2px solid $awi-blue-light; padding-bottom: 0.25rem; margin-t
 
 .member-card .meta { flex: 1; min-width: 0; }
 .member-card .name { font-size: 1.2rem; font-weight: 600; color: $awi-blue; }
-.member-card .position { color: $awi-gray; font-style: italic; margin-bottom: 0.4rem; }
-.member-card .bio { margin: 0.4rem 0; }
+.member-card .position { color: $awi-gray; font-style: italic; }
+.member-card .position a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba($awi-blue, 0.4);
+}
+.member-card .position a:hover { color: $awi-blue; }
+.member-card .dates {
+  font-size: 0.82rem;
+  color: $awi-gray;
+  margin-top: 0.1rem;
+  margin-bottom: 0.4rem;
+}
+.member-card .bio { margin: 0.5rem 0 0.4rem; }
 
 .member-card .links { margin-top: 0.5rem; }
 .member-card .links a {
