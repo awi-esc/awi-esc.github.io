@@ -2,20 +2,80 @@
 title: "Publications"
 ---
 
-Publications coming soon.
+## Articles
 
-<!--
-Once `references.bib` has entries, replace the front-matter and body above with:
+### 2026
 
----
-title: "Publications"
-bibliography: references.bib
-nocite: |
-  @*
----
+<div class="pub">
+Blasco et al.: Variability Antarctica, in prep. <span class="pub-status">in prep</span> <span class="pub-project">ClimTip</span> <span class="pub-project">TIPMIP</span>
+</div>
 
-::: {#refs}
-:::
+<div class="pub">
+Bochow, N., Hess, P., and Robinson, A.: Physics-constrained generative machine learning-based high-resolution downscaling of Greenland's surface mass balance and surface temperature, *The Cryosphere*, in revision. <span class="pub-status">in revision</span> <span class="pub-project">FORCLIMA</span>
+</div>
 
-This will render every entry in references.bib as a formatted reference list.
--->
+<div class="pub">
+Bochow, N., Kroenke, J., Garbe, J., and Wunderling, N.: Informing low-order models of climate tipping elements using outputs from higher-complexity Earth system models, *Earth Syst. Dynam.*, submitted. <span class="pub-status">submitted</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Grusdt, B. et al.: Strategies for learning from model ensembles, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Hebert, R. et al.: Inferring climate from pollen, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Höse, A. et al.: Simulating the impact of an AMOC weakening on the Antarctic Ice Sheet using a coupled climate and ice sheet model, in review. <span class="pub-status">in review</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Höse, A. et al.: Millennial-scale oscillations in the Southern Ocean in a warmer climate, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Höse, A. et al.: Probabilistic estimates of AMOC evolution under future warming, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Perrette, M. et al.: Robust reconstruction of the LGM climate, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Willeit, M. et al.: Long-term future Greenland ice loss determined by peak global warming, in review. <span class="pub-status">in review</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Qian, Z., Liu, T., Bathiany, S., Yang, S., Hess, P., Bochow, N., Burmester, C., Gelbrecht, M., Groenke, B., and Boers, N.: Generative reconstruction mitigates biases in historical climate records, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Wang, S., Bochow, N., Boers, N., Shin, Y., Yun, K. S., Park, J. Y., …, and Kug, J. S.: Mitigating Antarctic ice loss requires negative emissions, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+### 2025
+
+_No entries yet._
+
+## Conferences
+
+### 2026
+
+<div class="pub">
+Höse, A. et al.: Investigating Stability of the Atlantic Meridional Overturning Circulation using CLIMBER-X, *OSM 2026*. <span class="pub-type-talk">Talk</span>
+</div>
+
+<div class="pub">
+Höse, A. et al.: TIPMIP AMOC simulations using CLIMBER-X, *TIPMIP GA 2026*. <span class="pub-type-poster">Poster</span>
+</div>
+
+### 2025
+
+<div class="pub">
+Grusdt, B. et al.: Forming a robust estimate of the climate state through a model ensemble weighting approach, *EGU 2025*. <span class="pub-type-talk">Talk</span>
+</div>
+
+<div class="pub">
+Höse, A. et al.: Understanding multi-millennial variability in the Southern Ocean, *EGU 2025*. <span class="pub-type-poster">Poster</span>
+</div>
