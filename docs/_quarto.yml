@@ -10,8 +10,10 @@ website:
   favicon: assets/logo.png
   navbar:
     background: light
+    title: false
     logo: assets/logo.png
     logo-alt: "AWI Earth System Complexity"
+    logo-href: index.html
     left:
       - text: Home
         href: index.qmd
