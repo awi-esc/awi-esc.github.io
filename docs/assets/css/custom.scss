@@ -101,3 +101,48 @@ h2 { border-bottom: 2px solid $awi-blue-light; padding-bottom: 0.25rem; margin-t
   padding: 0.1rem 0.6rem;
   margin: 0 0.3rem 0.3rem 0;
 }
+
+// Landing page — publications list (subtle accent bar)
+.publications p {
+  border-left: 3px solid $awi-blue-light;
+  padding: 0.4rem 0 0.4rem 0.9rem;
+  margin: 0.6rem 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+// Landing page — tool cards
+.tool-card {
+  background: $awi-blue-soft;
+  border-left: 4px solid $awi-blue;
+  border-radius: 4px;
+  padding: 1rem 1.25rem 0.85rem;
+  margin: 1rem 0 1.25rem;
+}
+.tool-card h3 {
+  color: $awi-blue;
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  border-bottom: none;
+  font-size: 1.15rem;
+}
+.tool-card p { margin: 0.4rem 0; font-size: 0.95rem; }
+
+// Inline GitHub-style link button used in tool cards
+.repo-link {
+  display: inline-block;
+  margin-top: 0.3rem;
+  padding: 0.2rem 0.7rem;
+  background: white;
+  border: 1px solid $awi-blue-light;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: $awi-blue;
+  text-decoration: none;
+}
+.repo-link:hover {
+  background: $awi-blue;
+  color: white;
+  border-color: $awi-blue;
+}
+.repo-link i { margin-right: 0.35rem; }

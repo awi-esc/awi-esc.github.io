@@ -3,6 +3,8 @@
 Source for the **AWI Earth System Complexity** group website, built with
 [Quarto](https://quarto.org) and published to GitHub Pages.
 
+**Live site:** <https://awi-esc.github.io>
+
 ## Layout
 
 ```
