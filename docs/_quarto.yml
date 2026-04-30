@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - assets/people/**
+
+website:
+  title: "AWI Earth System Complexity"
+  description: "AWI Earth System Complexity research group"
+  favicon: assets/logo.png
+  navbar:
+    background: light
+    logo: assets/logo.png
+    logo-alt: "AWI Earth System Complexity"
+    left:
+      - text: Home
+        href: index.qmd
+      - text: People
+        href: people/index.qmd
+      - text: Research
+        href: research.qmd
+      - text: Publications
+        href: publications/index.qmd
+    right:
+      - icon: github
+        href: https://github.com/awi-esc
+        aria-label: GitHub
+
+  page-footer:
+    left: "AWI Earth System Complexity"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - assets/css/custom.scss
+    toc: false
+    code-tools: false
+    anchor-sections: true
+    grid:
+      body-width: 960px

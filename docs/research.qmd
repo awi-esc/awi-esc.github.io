@@ -1,0 +1,14 @@
+---
+title: "Research"
+---
+
+Placeholder. Add research themes here as separate sections, or link to
+sub-pages under `docs/research/`.
+
+## Theme 1
+
+Short description.
+
+## Theme 2
+
+Short description.

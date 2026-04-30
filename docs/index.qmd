@@ -1,0 +1,25 @@
+---
+title: ""
+pagetitle: "AWI Earth System Complexity"
+page-layout: full
+---
+
+::: {.hero}
+![](assets/logo.png){.hero-logo fig-alt="AWI Earth System Complexity logo"}
+
+The Earth System Complexity group at the Alfred Wegener Institute investigates
+the dynamics, feedbacks, and tipping behaviour of the climate system across
+timescales — from past glacial cycles to future projections.
+:::
+
+## What we do
+
+We combine process-based modelling, Earth observation, and statistical methods
+to understand how complexity emerges in the climate system. Our work spans
+ice-sheet dynamics, paleoclimate reconstruction, ocean–cryosphere interactions,
+and the development of efficient simulation tools.
+
+## Where to find us
+
+Alfred Wegener Institute, Helmholtz Centre for Polar and Marine Research
+Bremerhaven, Germany

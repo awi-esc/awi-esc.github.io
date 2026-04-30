@@ -1,0 +1,9 @@
+name: Alex Robinson
+position: Senior Scientist
+bio: Glaciologist working on ice-sheet tipping points and paleoclimate modelling.
+photo: photo.jpg
+order: 1
+links:
+  github: alex-robinson
+  orcid: 0000-0000-0000-0000
+keywords: [ice sheets, paleoclimate, Julia, Yelmo]

@@ -1,0 +1,103 @@
+/*-- scss:defaults --*/
+
+// Palette sampled from the AWI-ESC logo
+$awi-blue:        #3c78aa;  // "EarthSystem" deep blue
+$awi-blue-light:  #78aad2;  // "Complexity" light blue
+$awi-gray:        #828282;  // AWI wordmark gray
+$awi-blue-soft:   #f0f6fb;  // very pale blue tint for section backgrounds
+
+$primary:    $awi-blue;
+$secondary:  $awi-blue-light;
+$body-color: #1f2937;
+$link-color: $awi-blue;
+$headings-color: $awi-blue;
+$border-color: #e5e7eb;
+
+$navbar-bg: #ffffff;
+$navbar-fg: #1f2937;
+
+/*-- scss:rules --*/
+
+// Navbar polish
+.navbar {
+  border-bottom: 1px solid $border-color;
+}
+.navbar-brand img {
+  max-height: 38px;
+  width: auto;
+}
+
+// Headings
+h1, h2 { color: $awi-blue; }
+h2 { border-bottom: 2px solid $awi-blue-light; padding-bottom: 0.25rem; margin-top: 2rem; }
+
+// Hero block on landing page
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  background: $awi-blue-soft;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+.hero img.hero-logo {
+  max-width: 420px;
+  width: 80%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+.hero p { font-size: 1.1rem; color: #374151; max-width: 720px; margin: 0 auto; }
+
+// People page — member cards
+.member-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $border-color;
+}
+.member-card:last-of-type { border-bottom: none; }
+
+.member-card img,
+.member-card .photo-placeholder {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.member-card .photo-placeholder {
+  background: $awi-blue-light;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.member-card .meta { flex: 1; min-width: 0; }
+.member-card .name { font-size: 1.2rem; font-weight: 600; color: $awi-blue; }
+.member-card .position { color: $awi-gray; font-style: italic; margin-bottom: 0.4rem; }
+.member-card .bio { margin: 0.4rem 0; }
+
+.member-card .links { margin-top: 0.5rem; }
+.member-card .links a {
+  color: $awi-blue;
+  margin-right: 0.85rem;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+.member-card .links a:hover { color: $awi-blue-light; }
+
+.member-card .keywords { margin-top: 0.6rem; }
+.member-card .kw {
+  display: inline-block;
+  font-size: 0.78rem;
+  background: $awi-blue-soft;
+  color: $awi-blue;
+  border: 1px solid lighten($awi-blue-light, 15%);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  margin: 0 0.3rem 0.3rem 0;
+}

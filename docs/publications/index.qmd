@@ -1,0 +1,21 @@
+---
+title: "Publications"
+---
+
+Publications coming soon.
+
+<!--
+Once `references.bib` has entries, replace the front-matter and body above with:
+
+---
+title: "Publications"
+bibliography: references.bib
+nocite: |
+  @*
+---
+
+::: {#refs}
+:::
+
+This will render every entry in references.bib as a formatted reference list.
+-->
