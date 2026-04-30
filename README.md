@@ -33,11 +33,30 @@ scripts/
 
 ## How publishing works
 
-1. Push to `main` triggers `.github/workflows/publish.yml`.
-2. The workflow runs `scripts/build_people.py` (which materialises
-   `docs/people/index.qmd` and copies photos), then `quarto render docs`.
-3. The built site (`docs/_site/`) is force-pushed to the `gh-pages` branch.
-4. GitHub Pages serves from `gh-pages` / `(root)`.
+The repo uses a **two-branch model**:
+
+- **`main`** — day-to-day working branch. Edits here do **not** affect the
+  live site. People can experiment, draft content, add member profiles, etc.
+  without breaking what's published.
+- **`public`** — production branch. A push to this branch triggers the build.
+  When you're ready to publish, fast-forward `public` to whatever commit on
+  `main` you want to release:
+
+  ```sh
+  git checkout public
+  git merge --ff-only main      # or: git reset --hard <main-commit>
+  git push origin public
+  git checkout main
+  ```
+
+The CI workflow (`.github/workflows/publish.yml`) then:
+
+1. Runs `scripts/build_people.py` (materialises `docs/people/index.qmd` and
+   copies member photos).
+2. Runs `quarto render docs`.
+3. Force-pushes `docs/_site/` to the `gh-pages` branch.
+
+GitHub Pages serves from `gh-pages` / `(root)`.
 
 > **GitHub Pages settings**: in Settings → Pages, set source to
 > **Branch: `gh-pages`** with folder **`/ (root)`** (not `/docs`).
