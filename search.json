@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "publications/index.html",
+    "href": "publications/index.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Publications coming soon."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "Placeholder. Add research themes here as separate sections, or link to sub-pages under docs/research/."
+  },
+  {
+    "objectID": "research.html#theme-1",
+    "href": "research.html#theme-1",
+    "title": "Research",
+    "section": "Theme 1",
+    "text": "Theme 1\nShort description."
+  },
+  {
+    "objectID": "research.html#theme-2",
+    "href": "research.html#theme-2",
+    "title": "Research",
+    "section": "Theme 2",
+    "text": "Theme 2\nShort description."
+  },
+  {
+    "objectID": "people/index.html",
+    "href": "people/index.html",
+    "title": "People",
+    "section": "",
+    "text": "AR\n\n\n\nAlex Robinson\n\n\nSenior Scientist\n\n\nGlaciologist working on ice-sheet tipping points and paleoclimate modelling.\n\n\n\n\n\nice sheetspaleoclimateJuliaYelmo"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "AWI Earth System Complexity",
+    "section": "",
+    "text": "The Earth System Complexity group at the Alfred Wegener Institute investigates the dynamics, feedbacks, and tipping behaviour of the climate system across timescales — from past glacial cycles to future projections."
+  },
+  {
+    "objectID": "index.html#what-we-do",
+    "href": "index.html#what-we-do",
+    "title": "AWI Earth System Complexity",
+    "section": "What we do",
+    "text": "What we do\nWe combine process-based modelling, Earth observation, and statistical methods to understand how complexity emerges in the climate system. Our work spans ice-sheet dynamics, paleoclimate reconstruction, ocean–cryosphere interactions, and the development of efficient simulation tools."
+  },
+  {
+    "objectID": "index.html#where-to-find-us",
+    "href": "index.html#where-to-find-us",
+    "title": "AWI Earth System Complexity",
+    "section": "Where to find us",
+    "text": "Where to find us\nAlfred Wegener Institute, Helmholtz Centre for Polar and Marine Research Bremerhaven, Germany"
+  }
+]
