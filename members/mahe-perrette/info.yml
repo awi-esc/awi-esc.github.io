@@ -1,0 +1,15 @@
+name: Mahé Perrette            # required
+position: Researcher          # required (string, OR see "linked position" below)
+bio: I am a researcher and consultant in climate science with 15 years of experience, with a focus on probabilistic future projections, sea level rise and bayesian paleoclimate reconstruction.
+photo: photo.jpg             # optional; auto-detected if omitted
+order: 99                    # optional; lower = higher in list (default 99)
+start_date: 2024-06          # optional, YYYY-MM
+end_date:                    # optional, YYYY-MM — sets former-member status
+links:                       # all optional
+  github: perrette
+  orcid: 0000-0002-6309-4863
+  scholar: 2R3vEBIAAAAJ
+  website: https://perrette.science
+  email: mahe.perrette@gmail.com
+  linkedin: perrette
+keywords: [climate science, probabilistic projections, sea level rise, bayesian paleoclimate reconstruction]   # optional
