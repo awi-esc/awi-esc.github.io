@@ -60,5 +60,18 @@ Swierczek-Jereczek, J., Montoya, M., Latychev, K., Robinson, A., Alvarez-Solas, 
 
 ## Where to find us
 
-Alfred Wegener Institute, Helmholtz Centre for Polar and Marine Research
-Bremerhaven, Germany
+Alfred Wegener Institute, Helmholtz Centre for Polar and Marine Research,
+Potsdam, Germany
+
+::: {.location-map}
+<iframe
+  src="https://maps.google.com/maps?q=Alfred-Wegener-Institut+Telegrafenberg+Potsdam&z=16&output=embed"
+  width="100%"
+  height="340"
+  style="border:0;"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  title="Map showing AWI Potsdam location at Telegrafenberg">
+</iframe>
+:::
