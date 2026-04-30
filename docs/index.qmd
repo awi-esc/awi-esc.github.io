@@ -18,9 +18,9 @@ on long timescales, using numerical models and paleo data analysis.
 
 ::: {.publications}
 
-Bochow, N., Poltronieri, A., Robinson, A., Montoya, M., Rypdal, M. and Boers, N.: Overshooting the critical threshold for the Greenland ice sheet, *Nature*, 622, 528–536, [doi.org/10.1038/s41586-023-06503-9](https://doi.org/10.1038/s41586-023-06503-9), 2023.
+Bochow, N., Poltronieri, A., Robinson, A., Montoya, M., Rypdal, M., and Boers, N.: Overshooting the critical threshold for the Greenland ice sheet, *Nature*, 622, 528–536, [doi.org/10.1038/s41586-023-06503-9](https://doi.org/10.1038/s41586-023-06503-9), 2023.
 
-Swierczek‐Jereczek, J., Robinson, A., Blasco, J., Alvarez‐Solas, J. and Montoya, M.: Time‐scale synchronisation of oscillatory responses can lead to non‐monotonous R‐tipping, *Scientific Reports*, 13, 2104, [doi.org/10.1038/s41598-023-28771-1](https://doi.org/10.1038/s41598-023-28771-1), 2023.
+Swierczek‐Jereczek, J., Robinson, A., Blasco, J., Alvarez‐Solas, J., and Montoya, M.: Time‐scale synchronisation of oscillatory responses can lead to non‐monotonous R‐tipping, *Sci. Rep.*, 13, 2104, [doi.org/10.1038/s41598-023-28771-1](https://doi.org/10.1038/s41598-023-28771-1), 2023.
 
 Moreno-Parada, D., Alvarez-Solas, J., Blasco, J., Montoya, M., and Robinson, A.: Simulating the Laurentide Ice Sheet of the Last Glacial Maximum, *The Cryosphere*, 17, 2139–2156, [doi.org/10.5194/tc-17-2139-2023](https://doi.org/10.5194/tc-17-2139-2023), 2023.
 
