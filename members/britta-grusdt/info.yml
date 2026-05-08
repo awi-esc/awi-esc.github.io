@@ -1,0 +1,13 @@
+name: Britta Grusdt              # required
+position: Postdoctoral Researcher # required (string, OR see "linked position" below)
+bio: I am a postdoc working on the statistical analysis of climate model ensembles with a background in computational cognitive science.
+photo: britta.png            # optional; auto-detected if omitted
+order: 99                    # optional; lower = higher in list (default 99)
+start_date: 2024-04          # optional, YYYY-MM
+links:                       # all optional
+  github: brittaGrusdt
+  orcid: 0000-0001-7938-3734
+  scholar: _O3X79MAAAAJ
+  email: britta.grusdt@awi.de
+  linkedin: brittagrusdt
+keywords: [climate modeling, weighted ensembles, probablistic Bayesian statistics, Julia]   # optional
