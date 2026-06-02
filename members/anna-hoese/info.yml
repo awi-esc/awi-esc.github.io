@@ -1,0 +1,11 @@
+name: Anna Höse
+position: PhD Student
+bio: Climate researcher working with a fast Earth System model to understand (parts of) the thermohaline ocean circulation on multi-centennial timescales.
+photo: anna_avatar.png
+order: 1
+start_date: 2024-10
+links:
+  github: annahoese
+  orcid: 0009-0007-0094-9880
+  email: anna.hoese@awi.de
+keywords: [ocean, AMOC, Julia, Climber-X]
