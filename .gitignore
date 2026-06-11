@@ -1,3 +1,6 @@
+.claude/worktrees
+~.*
+
 # Quarto
 docs/_site/
 docs/.quarto/

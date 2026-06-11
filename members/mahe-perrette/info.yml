@@ -1,6 +1,6 @@
 name: Mahé Perrette            # required
 position: Researcher          # required (string, OR see "linked position" below)
-bio: I am a researcher and consultant in climate science with 15 years of experience, with a focus on probabilistic future projections, sea level rise and bayesian paleoclimate reconstruction.
+bio: Climate scientist working on probabilistic sea-level projections and Bayesian paleoclimate reconstruction.
 photo: photo.jpg             # optional; auto-detected if omitted
 order: 99                    # optional; lower = higher in list (default 99)
 start_date: 2024-06          # optional, YYYY-MM
