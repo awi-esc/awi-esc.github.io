@@ -1,5 +1,12 @@
 # Admin templates for AWI guest researchers
 
+What is needed for AWI admin:
+
+1. Signed copy of AWI_ConditionsGuestStay.pdf
+2. Copy of valid ID document (e.g. passport or identity card)
+3. Cooperation declaration between AWI and the external employer
+4. Employment verification document with an external employer (for students/postdocs/etc.)
+
 Templates used when hosting external guests in the Earth System Complexity group at AWI Potsdam. Replacement blocks are written as `<PLACEHOLDER>` — fill in before sending.
 
 ## Files
