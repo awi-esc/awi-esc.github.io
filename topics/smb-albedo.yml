@@ -1,0 +1,14 @@
+title: Albedo parameterizations for a surface mass balance model
+contact: nils-bochow
+level: [BSc, MSc]
+keywords: [Chion.jl, surface mass balance, albedo, machine learning, MODIS, remote sensing]
+status: open
+description: >
+  Surface albedo determines how much shortwave radiation is absorbed by snow
+  and ice, and thus how much energy is available for melt. In this project,
+  you will develop and test albedo parameterizations for the snowpack model
+  [Chion.jl](https://github.com/fesmc/Chion.jl), which calculates the surface
+  mass balance (SMB) of ice sheets and glaciers. The parameterizations will be
+  constrained with satellite observations (e.g., MODIS). Depending on your
+  interests, this can include simple machine-learning models trained on the
+  observations.

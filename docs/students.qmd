@@ -1,0 +1,56 @@
+---
+title: "For students"
+---
+
+We welcome students who are interested in doing a Bachelor's or Master's
+thesis with our group. Most thesis projects are based on numerical modeling or
+on the analysis of model output and observations. Each project addresses a
+current research question and is supervised by a scientist who works with the
+models and data involved.
+
+## What we do
+
+Our group investigates how the cryosphere interacts with the rest of the
+climate system, on timescales from decades to glacial cycles. Our research
+covers the following topics:
+
+- **Ice sheets and glaciers.** We simulate the Greenland and Antarctic ice
+  sheets, as well as past ice sheets, with the ice-sheet model
+  [Yelmo](https://github.com/palma-ice/yelmo).
+- **Snowpack and surface mass balance.** We model how snow accumulates, melts
+  and refreezes with the snowpack model
+  [Chion.jl](https://github.com/fesmc/Chion.jl). These processes determine the
+  surface mass balance of ice sheets and glaciers.
+- **Mountain glaciers.** We study the evolution of mountain glaciers at the
+  regional scale and their response to climate change.
+- **Climate–cryosphere interactions.** We use coupled models such as
+  [CLIMBER-X](https://github.com/cxesmc/climber-x) to study the feedbacks
+  between ice sheets, atmosphere and ocean.
+- **AMOC and the Southern Ocean.** We investigate the stability of the
+  Atlantic Meridional Overturning Circulation (AMOC) and the role of the
+  Southern Ocean in the climate system, including their response to meltwater
+  from the ice sheets.
+
+## What we look for
+
+Most projects involve programming, mainly in Julia and Fortran. Experience
+with these languages is helpful, but not required. More important is an
+interest in physical processes and a willingness to learn technical tools,
+such as running models on a computing cluster and analyzing large datasets.
+We welcome students from physics, mathematics, geosciences, meteorology,
+oceanography, computer science and related fields.
+
+The thesis is formally registered at your home university, with a professor
+there as first supervisor and a member of our group as co-supervisor at AWI.
+The details of this arrangement depend on the regulations of each university,
+so it is best to discuss them early.
+
+## Potential topics
+
+The topics below are examples of projects we are currently offering. Most can
+be adapted to the level of the thesis and to your interests. If none of them
+fits, we are also happy to discuss your own ideas. For a specific topic,
+please contact the person listed. For general questions, write to
+[Alexander Robinson](mailto:alexander.robinson@awi.de).
+
+{{< include _topics.qmd >}}

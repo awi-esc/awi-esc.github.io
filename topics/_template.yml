@@ -1,0 +1,10 @@
+# Copy this file to topics/<your-topic-slug>.yml and fill it in.
+# Files starting with "_" are ignored by the build.
+title: Short descriptive title          # required
+contact: your-member-slug               # required; member slug(s) from members/, e.g. [a-b, c-d]
+level: [BSc, MSc]                       # BSc and/or MSc
+keywords: [keyword1, keyword2]          # optional
+status: open                            # open (default) | taken — only open topics are shown
+description: >                          # required; Markdown, 3–5 sentences
+  What the project is about, what the student will do, and which
+  tools or data are involved.

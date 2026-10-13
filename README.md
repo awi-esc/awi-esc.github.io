@@ -12,6 +12,8 @@ docs/                          Quarto site source
   _quarto.yml                  site config (navbar, theme)
   index.qmd                    landing page
   research.qmd
+  students.qmd                 "For students" page (includes _topics.qmd)
+  _topics.qmd                  AUTO-GENERATED — do not edit
   publications/
     index.qmd
     references.bib             bibliography (BibTeX)
@@ -25,8 +27,13 @@ members/                       member-managed profiles
   README.md                    contributor guide
   <slug>/info.yml + photo.*
 
+topics/                        student thesis topics
+  README.md                    contributor guide
+  <slug>.yml
+
 scripts/
   build_people.py              members/ → docs/people/index.qmd
+  build_topics.py              topics/ → docs/_topics.qmd
 
 .github/workflows/publish.yml  CI: build + push to gh-pages
 ```
@@ -53,8 +60,9 @@ The CI workflow (`.github/workflows/publish.yml`) then:
 
 1. Runs `scripts/build_people.py` (materialises `docs/people/index.qmd` and
    copies member photos).
-2. Runs `quarto render docs`.
-3. Force-pushes `docs/_site/` to the `gh-pages` branch.
+2. Runs `scripts/build_topics.py` (materialises `docs/_topics.qmd`).
+3. Runs `quarto render docs`.
+4. Force-pushes `docs/_site/` to the `gh-pages` branch.
 
 GitHub Pages serves from `gh-pages` / `(root)`.
 
@@ -66,15 +74,17 @@ GitHub Pages serves from `gh-pages` / `(root)`.
 ```sh
 pip install pyyaml          # one-time
 python scripts/build_people.py
+python scripts/build_topics.py
 quarto preview docs
 ```
 
-Quarto auto-reloads on file changes. If you edit something under `members/`,
-re-run `build_people.py` to regenerate the People page.
+Quarto auto-reloads on file changes. If you edit something under `members/`
+or `topics/`, re-run the corresponding build script.
 
 ## Adding content
 
 - **A new member**: see [members/README.md](members/README.md).
+- **A student topic**: see [topics/README.md](topics/README.md).
 - **A publication**: append a BibTeX entry to
   [docs/publications/references.bib](docs/publications/references.bib), then
   switch the publications page front-matter to the bib-driven version (see the

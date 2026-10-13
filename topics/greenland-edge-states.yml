@@ -1,0 +1,13 @@
+title: Edge states of the Greenland ice sheet
+contact: nils-bochow
+level: [MSc]
+keywords: [Yelmo, Greenland, tipping points, dynamical systems]
+status: open
+description: >
+  The Greenland ice sheet (GrIS) has multiple stable states for the same
+  climate. These are separated by unstable states, so-called edge states,
+  that mark the boundary between their basins of attraction. In this project,
+  you will use the ice-sheet model Yelmo to locate edge states of the GrIS
+  with numerical methods such as edge tracking. The results indicate how far
+  the ice sheet can be perturbed before it no longer recovers. The project is
+  purely model based.

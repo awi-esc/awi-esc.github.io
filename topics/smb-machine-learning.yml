@@ -1,0 +1,12 @@
+title: A machine-learning surface mass balance model
+contact: nils-bochow
+level: [MSc]
+keywords: [machine learning, surface mass balance, emulation]
+status: open
+description: >
+  Physically based surface mass balance (SMB) models are computationally
+  expensive for long simulations or large ensembles. Machine-learning (ML)
+  models trained on their output offer a computationally efficient
+  alternative. In this project, you will extend an existing ML-based SMB
+  model, for example by adding predictors, testing other model architectures
+  or applying it to new regions. Some familiarity with ML methods is helpful.
