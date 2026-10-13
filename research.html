@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,10 +43,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-08d3209c42c229edc7fa72194fff0e0d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-09d8ab575104c096c2250878f9bc746e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,6 +108,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./publications/index.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./students.html"> 
+<span class="menu-text">For students</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -146,14 +153,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Placeholder. Add research themes here as separate sections, or link to sub-pages under <code>docs/research/</code>.</p>
-<section id="theme-1" class="level2">
-<h2 class="anchored" data-anchor-id="theme-1">Theme 1</h2>
-<p>Short description.</p>
+<p>Our group investigates how ice sheets, glaciers and snow interact with the atmosphere and ocean, on timescales from decades to glacial cycles. This work depends on numerical models that are fast enough to simulate many thousands of years or to run large ensembles, while still representing the relevant physical processes. For this reason, a large part of our effort goes into developing such models and making them openly available.</p>
+<section id="model-development" class="level2">
+<h2 class="anchored" data-anchor-id="model-development">Model development</h2>
+<section id="yelmo-ice-sheet-model" class="level3 tool-card">
+<h3 class="anchored" data-anchor-id="yelmo-ice-sheet-model">Yelmo ice-sheet model</h3>
+<p>Yelmo is a thermomechanical ice-sheet model that can be applied to any ice sheet, from present-day Greenland and Antarctica to the ice sheets of past glacial periods. It solves for ice flow with a choice of approximations to the Stokes equations (e.g., the shallow-ice, shallow-shelf and depth-integrated viscosity approximations). We use Yelmo to study ice-sheet tipping points, paleo ice-sheet evolution and long-term sea-level rise. Yelmo runs as a stand-alone model or coupled to CLIMBER-X, and a Julia version (Yelmo.jl) is under development.</p>
+<p>Robinson, A., Alvarez-Solas, J., Montoya, M., Goelzer, H., Greve, R., and Ritz, C.: Description and validation of the ice-sheet model Yelmo (version 1.0), <em>Geosci. Model Dev.</em>, 13, 2805–2823, <a href="https://doi.org/10.5194/gmd-13-2805-2020">doi.org/10.5194/gmd-13-2805-2020</a>, 2020.</p>
+<p><a href="https://github.com/fesmc/yelmo" class="repo-link"><i class="bi bi-github"></i> fesmc/yelmo</a></p>
 </section>
-<section id="theme-2" class="level2">
-<h2 class="anchored" data-anchor-id="theme-2">Theme 2</h2>
-<p>Short description.</p>
+<section id="climber-x-earth-system-model" class="level3 tool-card">
+<h3 class="anchored" data-anchor-id="climber-x-earth-system-model">CLIMBER-X Earth system model</h3>
+<p>CLIMBER-X is a fast Earth system model (fESM) that couples a statistical-dynamical atmosphere to a three-dimensional ocean, sea ice, a land surface with dynamic vegetation and an interactive carbon cycle. It simulates on the order of 10,000 years per day, which makes it suitable for glacial cycles and for large ensembles of future projections. We use CLIMBER-X to study the stability of the Atlantic Meridional Overturning Circulation (AMOC), variability in the Southern Ocean and the long-term response of the ice sheets to warming.</p>
+<p>Willeit, M., Ganopolski, A., Robinson, A., and Edwards, N. R.: The Earth system model CLIMBER-X v1.0 – Part 1: Climate model description and validation, <em>Geosci. Model Dev.</em>, 15, 5905–5948, <a href="https://doi.org/10.5194/gmd-15-5905-2022">doi.org/10.5194/gmd-15-5905-2022</a>, 2022.</p>
+<p><a href="https://github.com/cxesmc/climber-x" class="repo-link"><i class="bi bi-github"></i> cxesmc/climber-x</a></p>
+</section>
+</section>
+<section id="fast-earth-system-modeling-community" class="level2">
+<h2 class="anchored" data-anchor-id="fast-earth-system-modeling-community">Fast Earth system modeling community</h2>
+<p>Yelmo and CLIMBER-X are part of a wider effort to develop fESMs as open, modular software. The <a href="https://github.com/fesmc">Fast Earth System Modeling Community</a> hosts Yelmo together with related components, such as the snowpack model <a href="https://github.com/fesmc/Chion.jl">Chion.jl</a>, models of glacial isostatic adjustment and basal hydrology, and tools for preparing input data. CLIMBER-X is maintained by the <a href="https://github.com/cxesmc">CLIMBER-X Earth System Modelling Community</a>. Each component can be run stand-alone or coupled within a fESM, which allows individual processes to be tested before they are used in long coupled simulations.</p>
+</section>
+<section id="collaborations" class="level2">
+<h2 class="anchored" data-anchor-id="collaborations">Collaborations</h2>
+<p>Our model development is a long-standing collaboration with the following partners:</p>
+<ul>
+<li><strong>Universidad Complutense de Madrid (UCM):</strong> Marisa Montoya and the <a href="https://www.palma-ucm.es/palma-ice">PalMA ice-sheet modeling group</a>.</li>
+<li><strong>Instituto de Geociencias (IGEO, CSIC-UCM):</strong> Jorge Alvarez-Solas.</li>
+<li><strong>Potsdam Institute for Climate Impact Research (PIK):</strong> Matteo Willeit and Georg Feulner.</li>
+</ul>
+</section>
+<section id="recent-publications" class="level2">
+<h2 class="anchored" data-anchor-id="recent-publications">Recent publications</h2>
+<div class="publications">
+<p>Juarez-Martinez, A., Robinson, A., Swierczek-Jereczek, J., Blasco, J., Alvarez-Solas, J., and Montoya, M.: Parameterizing tidal-water intrusions in long-term Antarctic ice-sheet projections, <em>The Cryosphere</em>, 20, 5345–5363, <a href="https://doi.org/10.5194/tc-20-5345-2026">doi.org/10.5194/tc-20-5345-2026</a>, 2026.</p>
+<p>Kypke, K., Montoya, M., Robinson, A., Alvarez-Solas, J., Swierczek-Jereczek, J., and Ditlevsen, P.: Chaotic fluctuations in Greenland ice streams limit predictability of ice sheet collapse, <em>Earth Syst. Dynam.</em>, 17, 769–794, <a href="https://doi.org/10.5194/esd-17-769-2026">doi.org/10.5194/esd-17-769-2026</a>, 2026.</p>
+<p>Bochow, N., Hess, P., and Robinson, A.: Physics-constrained generative machine learning-based high-resolution downscaling of Greenland’s surface mass balance and surface temperature, <em>The Cryosphere</em>, 20, 1841–1866, <a href="https://doi.org/10.5194/tc-20-1841-2026">doi.org/10.5194/tc-20-1841-2026</a>, 2026.</p>
+<p>Gutiérrez-González, L., Robinson, A., Alvarez-Solas, J., Tabone, I., Swierczek-Jereczek, J., Moreno-Parada, D., and Montoya, M.: Hysteresis of the Greenland ice sheet from the Last Glacial Maximum to the future, <em>The Cryosphere</em>, 20, 1139–1162, <a href="https://doi.org/10.5194/tc-20-1139-2026">doi.org/10.5194/tc-20-1139-2026</a>, 2026.</p>
+<p>Pérez-Montero, S., Alvarez-Solas, J., Swierczek-Jereczek, J., Moreno-Parada, D., Robinson, A., and Montoya, M.: Exploring the Mid-Pleistocene transition with a simple physical model, <em>Clim. Past</em>, 22, 625–646, <a href="https://doi.org/10.5194/cp-22-625-2026">doi.org/10.5194/cp-22-625-2026</a>, 2026.</p>
+<p>Moreno-Parada, D., Robinson, A., Montoya, M., and Alvarez-Solas, J.: Description and validation of the ice-sheet model Nix v1.0, <em>Geosci. Model Dev.</em>, 18, 3895–3919, <a href="https://doi.org/10.5194/gmd-18-3895-2025">doi.org/10.5194/gmd-18-3895-2025</a>, 2025.</p>
+</div>
+<p>See <a href="./publications/index.html">Publications</a> for the full list, including work in progress and conference contributions.</p>
 
 
 </section>
