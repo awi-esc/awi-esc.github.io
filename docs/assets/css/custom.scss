@@ -303,3 +303,39 @@ h3 + .pub { margin-top: 0.35rem; }
   .resource-card { flex-direction: column; }
   .resource-card .resource-thumb { flex-basis: auto; width: 60%; }
 }
+
+// Research page — word cloud of group topics
+.word-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.35rem 0;
+  margin: 1.75rem 0 1rem;
+  padding: 1.5rem 1.75rem;
+  background: $surface-soft;
+  border-radius: 8px;
+  line-height: 1.3;
+  text-align: center;
+}
+.word-cloud .w { white-space: nowrap; }
+.word-cloud .w + .w::before {
+  content: "·";
+  margin: 0 0.6rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9ca3af;
+}
+.word-cloud .w1 { font-size: 1.05rem; }
+.word-cloud .w2 { font-size: 1.25rem; }
+.word-cloud .w3 { font-size: 1.6rem; font-weight: 600; }
+.word-cloud .c-ink    { color: $ink; }
+.word-cloud .c-gray   { color: $awi-gray; }
+.word-cloud .c-blue   { color: $awi-blue; }
+.word-cloud .c-accent { color: $accent; }
+@media (max-width: 576px) {
+  .word-cloud { padding: 1rem; }
+  .word-cloud .w { white-space: normal; }
+  .word-cloud .w2 { font-size: 1.1rem; }
+  .word-cloud .w3 { font-size: 1.35rem; }
+}

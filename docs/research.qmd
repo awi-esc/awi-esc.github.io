@@ -9,6 +9,30 @@ years or to run large ensembles, while still representing the relevant
 physical processes. For this reason, a large part of our effort goes into
 developing such models and making them openly available.
 
+<!-- Word cloud from the ENVI Day 2026 group slide. Size: w1 < w2 < w3; colour: c-ink, c-gray, c-blue, c-accent. -->
+<div class="word-cloud" aria-label="Research topics of the group">
+<span class="w w2 c-blue">Earth system modeling</span>
+<span class="w w2 c-ink">data assimilation</span>
+<span class="w w2 c-gray">machine learning</span>
+<span class="w w2 c-ink">tensor networks</span>
+<span class="w w2 c-blue">sea-level rise</span>
+<span class="w w1 c-gray">ocean</span>
+<span class="w w2 c-blue">scientific computing</span>
+<span class="w w2 c-ink">glacial hydrology</span>
+<span class="w w2 c-gray">climate dynamics</span>
+<span class="w w1 c-gray">ensemble modeling</span>
+<span class="w w3 c-accent">climate science</span>
+<span class="w w2 c-blue">Bayesian paleoclimate reconstruction</span>
+<span class="w w2 c-ink">AMOC</span>
+<span class="w w3 c-blue">ice sheets</span>
+<span class="w w1 c-gray">CLIMBER-X fast Earth system model</span>
+<span class="w w2 c-accent">Yelmo ice-sheet model</span>
+<span class="w w2 c-ink">tipping points</span>
+<span class="w w3 c-accent">Julia</span>
+<span class="w w3 c-ink">paleoclimate</span>
+<span class="w w2 c-blue">probabilistic Bayesian statistics</span>
+</div>
+
 ## Model development
 
 ::: {.tool-card}
