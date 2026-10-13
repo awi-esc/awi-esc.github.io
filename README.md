@@ -46,15 +46,16 @@ The repo uses a **two-branch model**:
   live site. People can experiment, draft content, add member profiles, etc.
   without breaking what's published.
 - **`public`** — production branch. A push to this branch triggers the build.
-  When you're ready to publish, fast-forward `public` to whatever commit on
-  `main` you want to release:
+  When you're ready to publish, open a pull request from `main` into `public`
+  and merge it:
 
   ```sh
-  git checkout public
-  git merge --ff-only main      # or: git reset --hard <main-commit>
-  git push origin public
-  git checkout main
+  gh pr create --base public --head main --title "Publish" --body ""
+  gh pr merge --merge
   ```
+
+  `public` contains these merge commits, so it cannot be fast-forwarded to
+  `main`.
 
 The CI workflow (`.github/workflows/publish.yml`) then:
 
