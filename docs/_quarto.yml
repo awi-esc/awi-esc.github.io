@@ -3,6 +3,7 @@ project:
   output-dir: _site
   resources:
     - assets/people/**
+    - assets/img/**
 
 website:
   title: "AWI Earth System Complexity"
@@ -23,6 +24,8 @@ website:
         href: publications/index.qmd
       - text: For students
         href: students.qmd
+      - text: Resources
+        href: resources.qmd
     right:
       - icon: github
         href: https://github.com/awi-esc
@@ -41,4 +44,4 @@ format:
     code-tools: false
     anchor-sections: true
     grid:
-      body-width: 960px
+      body-width: 1040px

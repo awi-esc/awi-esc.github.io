@@ -4,14 +4,18 @@ pagetitle: "AWI Earth System Complexity"
 page-layout: full
 ---
 
-::: {.hero}
-# Earth System Complexity
+::: {.hero style="background-image: url('assets/img/header-antarctica.jpg');"}
+::: {.hero-text}
+[Earth System Complexity]{.hero-title}
 
 The Earth System Complexity group at AWI is focused on understanding
 interactions between large-scale components of the Earth — the ice sheets and
 ocean circulation, boreal forest and permafrost. We strive to increase our
 understanding of the relevant processes driving dynamics within these systems
 on long timescales, using numerical models and paleo data analysis.
+:::
+
+[[Map: fesmc/cryosphere-maps](resources.qmd)]{.hero-credit}
 :::
 
 ## Some publications
