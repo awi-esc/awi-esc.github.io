@@ -21,6 +21,8 @@ website:
         href: research.qmd
       - text: Publications
         href: publications/index.qmd
+      - text: For students
+        href: students.qmd
     right:
       - icon: github
         href: https://github.com/awi-esc

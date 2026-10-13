@@ -2,13 +2,90 @@
 title: "Research"
 ---
 
-Placeholder. Add research themes here as separate sections, or link to
-sub-pages under `docs/research/`.
+Our group investigates how ice sheets, glaciers and snow interact with the
+atmosphere and ocean, on timescales from decades to glacial cycles. This work
+depends on numerical models that are fast enough to simulate many thousands of
+years or to run large ensembles, while still representing the relevant
+physical processes. For this reason, a large part of our effort goes into
+developing such models and making them openly available.
 
-## Theme 1
+## Model development
 
-Short description.
+::: {.tool-card}
+### Yelmo ice-sheet model
 
-## Theme 2
+Yelmo is a thermomechanical ice-sheet model that can be applied to any ice
+sheet, from present-day Greenland and Antarctica to the ice sheets of past
+glacial periods. It solves for ice flow with a choice of approximations to the
+Stokes equations (e.g., the shallow-ice, shallow-shelf and depth-integrated
+viscosity approximations). We use Yelmo to study ice-sheet tipping points,
+paleo ice-sheet evolution and long-term sea-level rise. Yelmo runs as a
+stand-alone model or coupled to CLIMBER-X, and a Julia version (Yelmo.jl) is
+under development.
 
-Short description.
+Robinson, A., Alvarez-Solas, J., Montoya, M., Goelzer, H., Greve, R., and Ritz, C.: Description and validation of the ice-sheet model Yelmo (version 1.0), *Geosci. Model Dev.*, 13, 2805–2823, [doi.org/10.5194/gmd-13-2805-2020](https://doi.org/10.5194/gmd-13-2805-2020), 2020.
+
+[<i class="bi bi-github"></i> fesmc/yelmo](https://github.com/fesmc/yelmo){.repo-link}
+:::
+
+::: {.tool-card}
+### CLIMBER-X Earth system model
+
+CLIMBER-X is a fast Earth system model (fESM) that couples a
+statistical-dynamical atmosphere to a three-dimensional ocean, sea ice, a land
+surface with dynamic vegetation and an interactive carbon cycle. It simulates
+on the order of 10,000 years per day, which makes it suitable for glacial
+cycles and for large ensembles of future projections. We use CLIMBER-X to
+study the stability of the Atlantic Meridional Overturning Circulation (AMOC),
+variability in the Southern Ocean and the long-term response of the ice sheets
+to warming.
+
+Willeit, M., Ganopolski, A., Robinson, A., and Edwards, N. R.: The Earth system model CLIMBER-X v1.0 – Part 1: Climate model description and validation, *Geosci. Model Dev.*, 15, 5905–5948, [doi.org/10.5194/gmd-15-5905-2022](https://doi.org/10.5194/gmd-15-5905-2022), 2022.
+
+[<i class="bi bi-github"></i> cxesmc/climber-x](https://github.com/cxesmc/climber-x){.repo-link}
+:::
+
+## Fast Earth system modeling community
+
+Yelmo and CLIMBER-X are part of a wider effort to develop fESMs as open,
+modular software. The [Fast Earth System Modeling
+Community](https://github.com/fesmc) hosts Yelmo together with related
+components, such as the snowpack model
+[Chion.jl](https://github.com/fesmc/Chion.jl), models of glacial isostatic
+adjustment and basal hydrology, and tools for preparing input data. CLIMBER-X
+is maintained by the [CLIMBER-X Earth System Modelling
+Community](https://github.com/cxesmc). Each component can be run stand-alone or
+coupled within a fESM, which allows individual processes to be tested before
+they are used in long coupled simulations.
+
+## Collaborations
+
+Our model development is a long-standing collaboration with the following
+partners:
+
+- **Universidad Complutense de Madrid (UCM):** Marisa Montoya and the
+  [PalMA ice-sheet modeling group](https://www.palma-ucm.es/palma-ice).
+- **Instituto de Geociencias (IGEO, CSIC-UCM):** Jorge Alvarez-Solas.
+- **Potsdam Institute for Climate Impact Research (PIK):** Matteo Willeit and
+  Georg Feulner.
+
+## Recent publications
+
+::: {.publications}
+
+Juarez-Martinez, A., Robinson, A., Swierczek-Jereczek, J., Blasco, J., Alvarez-Solas, J., and Montoya, M.: Parameterizing tidal-water intrusions in long-term Antarctic ice-sheet projections, *The Cryosphere*, 20, 5345–5363, [doi.org/10.5194/tc-20-5345-2026](https://doi.org/10.5194/tc-20-5345-2026), 2026.
+
+Kypke, K., Montoya, M., Robinson, A., Alvarez-Solas, J., Swierczek-Jereczek, J., and Ditlevsen, P.: Chaotic fluctuations in Greenland ice streams limit predictability of ice sheet collapse, *Earth Syst. Dynam.*, 17, 769–794, [doi.org/10.5194/esd-17-769-2026](https://doi.org/10.5194/esd-17-769-2026), 2026.
+
+Bochow, N., Hess, P., and Robinson, A.: Physics-constrained generative machine learning-based high-resolution downscaling of Greenland's surface mass balance and surface temperature, *The Cryosphere*, 20, 1841–1866, [doi.org/10.5194/tc-20-1841-2026](https://doi.org/10.5194/tc-20-1841-2026), 2026.
+
+Gutiérrez-González, L., Robinson, A., Alvarez-Solas, J., Tabone, I., Swierczek-Jereczek, J., Moreno-Parada, D., and Montoya, M.: Hysteresis of the Greenland ice sheet from the Last Glacial Maximum to the future, *The Cryosphere*, 20, 1139–1162, [doi.org/10.5194/tc-20-1139-2026](https://doi.org/10.5194/tc-20-1139-2026), 2026.
+
+Pérez-Montero, S., Alvarez-Solas, J., Swierczek-Jereczek, J., Moreno-Parada, D., Robinson, A., and Montoya, M.: Exploring the Mid-Pleistocene transition with a simple physical model, *Clim. Past*, 22, 625–646, [doi.org/10.5194/cp-22-625-2026](https://doi.org/10.5194/cp-22-625-2026), 2026.
+
+Moreno-Parada, D., Robinson, A., Montoya, M., and Alvarez-Solas, J.: Description and validation of the ice-sheet model Nix v1.0, *Geosci. Model Dev.*, 18, 3895–3919, [doi.org/10.5194/gmd-18-3895-2025](https://doi.org/10.5194/gmd-18-3895-2025), 2025.
+
+:::
+
+See [Publications](publications/index.qmd) for the full list, including
+work in progress and conference contributions.

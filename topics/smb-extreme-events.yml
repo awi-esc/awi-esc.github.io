@@ -1,0 +1,14 @@
+title: Effect of extreme events on surface mass balance
+contact: nils-bochow
+level: [BSc, MSc]
+keywords: [Chion.jl, surface mass balance, extreme events, Greenland, glaciers]
+status: open
+description: >
+  Heat waves and other extreme weather events can cause large melt anomalies,
+  such as the melt events over the Greenland ice sheet in 2012 and 2019. In
+  this project, you will use the snowpack model
+  [Chion.jl](https://github.com/fesmc/Chion.jl) to quantify how such events
+  affect the surface mass balance of the Greenland ice sheet or of mountain
+  glaciers. Possible questions include how much of the total mass loss is
+  caused by a few extreme events, and whether changes in their frequency or
+  changes in the mean climate dominate future mass loss.
