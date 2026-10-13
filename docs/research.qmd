@@ -63,8 +63,8 @@ they are used in long coupled simulations.
 Our model development is a long-standing collaboration with the following
 partners:
 
-- **Universidad Complutense de Madrid (UCM):** Marisa Montoya and the
-  [PalMA ice-sheet modeling group](https://www.palma-ucm.es/palma-ice).
+- **Universidad Complutense de Madrid (UCM):** Marisa Montoya and the PalMA
+  ice-sheet modeling group.
 - **Instituto de Geociencias (IGEO, CSIC-UCM):** Jorge Alvarez-Solas.
 - **Potsdam Institute for Climate Impact Research (PIK):** Matteo Willeit and
   Georg Feulner.

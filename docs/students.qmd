@@ -40,10 +40,9 @@ such as running models on a computing cluster and analyzing large datasets.
 We welcome students from physics, mathematics, geosciences, meteorology,
 oceanography, computer science and related fields.
 
-The thesis is formally registered at your home university, with a professor
-there as first supervisor and a member of our group as co-supervisor at AWI.
-The details of this arrangement depend on the regulations of each university,
-so it is best to discuss them early.
+A member of our group typically acts as co-supervisor of the thesis. The
+supervision arrangement differs between universities, so it should be
+determined early in the project.
 
 ## Potential topics
 
