@@ -35,7 +35,7 @@ A higher-order continental-scale ice sheet model.
 
 Robinson, A., Alvarez-Solas, J., Montoya, M., Goelzer, H., Greve, R., and Ritz, C.: Description and validation of the ice-sheet model Yelmo (version 1.0), *Geosci. Model Dev.*, 13, 2805–2823, [doi.org/10.5194/gmd-13-2805-2020](https://doi.org/10.5194/gmd-13-2805-2020), 2020.
 
-[<i class="bi bi-github"></i> palma-ice/yelmo](https://github.com/palma-ice/yelmo){.repo-link}
+[<i class="bi bi-github"></i> fesmc/yelmo](https://github.com/fesmc/yelmo){.repo-link}
 :::
 
 ::: {.tool-card}

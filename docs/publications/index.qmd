@@ -11,7 +11,7 @@ Blasco et al.: Variability Antarctica, in prep. <span class="pub-status">in prep
 </div>
 
 <div class="pub">
-Bochow, N., Hess, P., and Robinson, A.: Physics-constrained generative machine learning-based high-resolution downscaling of Greenland's surface mass balance and surface temperature, *The Cryosphere*, in revision. <span class="pub-status">in revision</span> <span class="pub-project">FORCLIMA</span>
+Bochow, N., Hess, P., and Robinson, A.: Physics-constrained generative machine learning-based high-resolution downscaling of Greenland's surface mass balance and surface temperature, *The Cryosphere*, 20, 1841–1866, [doi.org/10.5194/tc-20-1841-2026](https://doi.org/10.5194/tc-20-1841-2026), 2026. <span class="pub-project">FORCLIMA</span>
 </div>
 
 <div class="pub">

@@ -16,7 +16,7 @@ covers the following topics:
 
 - **Ice sheets and glaciers.** We simulate the Greenland and Antarctic ice
   sheets, as well as past ice sheets, with the ice-sheet model
-  [Yelmo](https://github.com/palma-ice/yelmo).
+  [Yelmo](https://github.com/fesmc/yelmo).
 - **Snowpack and surface mass balance.** We model how snow accumulates, melts
   and refreezes with the snowpack model
   [Chion.jl](https://github.com/fesmc/Chion.jl). These processes determine the
