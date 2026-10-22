@@ -2,11 +2,16 @@
 title: "Antarctic basins can tip early when warming outpaces the solid Earth"
 subtitle: >-
   As ice retreats, the bedrock beneath it rises and stabilizes the ice sheet.
-  Below East Antarctica this rebound is slow. In new simulations led by
-  [Jan Swierczek-Jereczek](https://github.com/JanJereczek), two large East
-  Antarctic basins collapse at up to 0.5 °C less warming than equilibrium
-  simulations suggest. This means that not just how much, but how *fast* the
-  Earth warms is important for Antarctic stability.
+  Below East Antarctica this rebound is slow. In a
+  [new paper](https://doi.org/10.1038/s41561-026-02117-8) led by
+  [Jan Swierczek-Jereczek](https://github.com/JanJereczek), transient
+  simulations show that two large East Antarctic basins collapse at up to
+  0.5&nbsp;°C less warming than equilibrium simulations suggest. This means that
+  not just how much, but how *fast* the Earth warms, is important for
+  Antarctic stability. A warming rate of about 0.07&nbsp;°C per century, far below
+  the present rate of about 2&nbsp;°C per century, is already enough for the full
+  effect in the Recovery basin. Both basins combined hold enough ice to raise
+  sea level by about 7&nbsp;m.
 description: >-
   When warming outpaces the slow rebound of the bedrock, the Recovery and
   Aurora basins can collapse below their equilibrium tipping point.
@@ -18,20 +23,8 @@ resources:
   - teaser.svg
 ---
 
-::: {.hl-numbers}
-::: {.hl-number}
-[up to 0.5 °C]{.hl-number-value}
-[less global warming needed to collapse the Recovery and Aurora basins]{.hl-number-label}
-:::
-::: {.hl-number}
-[~0.07 °C]{.hl-number-value}
-[per century: a warming rate already fast enough for the full effect in the Recovery basin]{.hl-number-label}
-:::
-::: {.hl-number}
-[~7 m]{.hl-number-value}
-[sea-level equivalent of ice held in the Recovery and Aurora basins]{.hl-number-label}
-:::
-:::
+::: {.rt-box}
+[Example of the rate-induced tipping mechanism]{.rt-box-title}
 
 <div id="rt-hero" class="rt-hero">
 <noscript><img src="teaser.svg" alt="Cross-sections of a marine ice sheet on a soft and a stiff mantle"></noscript>
@@ -39,6 +32,7 @@ resources:
 
 ::: {.rt-caption}
 A toy marine ice sheet under the same warming in both panels. Only the response time of the mantle differs (200 years above, 10,000 years below). With a soft mantle, the bed rises fast enough to hold the grounding line at the sill. With a stiff mantle, the grounding line passes the sill before the bed has risen and retreats into the basin.
+:::
 :::
 
 ## Tipping before the tipping point
@@ -67,7 +61,11 @@ The model below is a toy version of the mechanism. It represents a single ground
 
 The map below the controls shows the outcome of all combinations of warming rate and level for the selected mantle response time, with one simulation per square. Click a square to run it. Orange squares below the dashed line collapse although the warming stays below the equilibrium tipping point. For a soft mantle, the boundary follows the dashed line at all rates. For a stiff mantle, it drops towards the dotted line at high rates, which marks the tipping point of a bed that never rebounds. This is the toy-model equivalent of Fig. 3 in the paper.
 
+::: {.rt-box}
+[Interactive toy model of rate-induced tipping]{.rt-box-title}
+
 <div id="rt-lab" class="rt-lab"></div>
+:::
 
 ::: {.callout-note collapse="true" appearance="simple"}
 ## How the toy model works

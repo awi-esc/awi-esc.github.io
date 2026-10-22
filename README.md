@@ -98,7 +98,7 @@ or `topics/`, re-run the corresponding build script.
   in the front matter; the Highlights page and the landing page list it
   automatically. Put figures and any page-specific `css`/`resources` (e.g.,
   JavaScript for interactive figures) in the same folder. Reusable blocks
-  (`.hl-numbers`, `.hl-cite`, `.hl-credit`) are styled in `custom.scss`; see
+  (`.hl-cite`, `.hl-credit`) are styled in `custom.scss`; see
   `docs/highlights/rtip-antarctica/` for an example.
 - **A research theme**: edit [docs/research.qmd](docs/research.qmd), or add a
   sub-page under `docs/research/` and link it from there.
