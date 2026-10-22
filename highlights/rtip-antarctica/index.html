@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-12482d3d6245e7616cb64559bed22f25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-63fca98ace7a5b5340bf67084f5a893b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -110,7 +110,7 @@ window.Quarto = {
 <link rel="stylesheet" href="rtip.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed highlight-page fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -177,7 +177,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Antarctic basins can tip early when warming outpaces the solid Earth</h1>
-<p class="subtitle lead">As ice retreats, the bedrock beneath it rises and stabilizes the ice sheet. Below East Antarctica this rebound is slow. In new simulations led by <a href="https://github.com/JanJereczek">Jan Swierczek-Jereczek</a>, two large East Antarctic basins collapse at up to 0.5 °C less warming than equilibrium simulations suggest. This means that not just how much, but how <em>fast</em> the Earth warms is important for Antarctic stability.</p>
+<p class="subtitle lead">As ice retreats, the bedrock beneath it rises and stabilizes the ice sheet. Below East Antarctica this rebound is slow. In a <a href="https://doi.org/10.1038/s41561-026-02117-8">new paper</a> led by <a href="https://github.com/JanJereczek">Jan Swierczek-Jereczek</a>, transient simulations show that two large East Antarctic basins collapse at up to 0.5&nbsp;°C less warming than equilibrium simulations suggest. This means that not just how much, but how <em>fast</em> the Earth warms, is important for Antarctic stability. A warming rate of about 0.07&nbsp;°C per century, far below the present rate of about 2&nbsp;°C per century, is already enough for the full effect in the Recovery basin. Both basins combined hold enough ice to raise sea level by about 7&nbsp;m.</p>
 </div>
 
 <div>
@@ -205,17 +205,8 @@ window.Quarto = {
 </header>
 
 
-<div class="hl-numbers">
-<div class="hl-number">
-<p><span class="hl-number-value">up to 0.5 °C</span> <span class="hl-number-label">less global warming needed to collapse the Recovery and Aurora basins</span></p>
-</div>
-<div class="hl-number">
-<p><span class="hl-number-value">~0.07 °C</span> <span class="hl-number-label">per century: a warming rate already fast enough for the full effect in the Recovery basin</span></p>
-</div>
-<div class="hl-number">
-<p><span class="hl-number-value">~7 m</span> <span class="hl-number-label">sea-level equivalent of ice held in the Recovery and Aurora basins</span></p>
-</div>
-</div>
+<div class="rt-box">
+<p><span class="rt-box-title">Example of the rate-induced tipping mechanism</span></p>
 <div id="rt-hero" class="rt-hero">
 <noscript>
 <img src="teaser.svg" alt="Cross-sections of a marine ice sheet on a soft and a stiff mantle">
@@ -223,6 +214,7 @@ window.Quarto = {
 </div>
 <div class="rt-caption">
 <p>A toy marine ice sheet under the same warming in both panels. Only the response time of the mantle differs (200 years above, 10,000 years below). With a soft mantle, the bed rises fast enough to hold the grounding line at the sill. With a stiff mantle, the grounding line passes the sill before the bed has risen and retreats into the basin.</p>
+</div>
 </div>
 <section id="tipping-before-the-tipping-point" class="level2">
 <h2 class="anchored" data-anchor-id="tipping-before-the-tipping-point">Tipping before the tipping point</h2>
@@ -247,8 +239,11 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
 <p>The model below is a toy version of the mechanism. It represents a single grounding line on a bed with a sill and a deep basin inland, with a bedrock that rises with a delay. Each run starts from the same present-day state, warms at the chosen rate up to the chosen level and then holds that level. Start with the stiff mantle at 2.9 °C and 1 °C per century, then switch to the soft mantle.</p>
 <p>The map below the controls shows the outcome of all combinations of warming rate and level for the selected mantle response time, with one simulation per square. Click a square to run it. Orange squares below the dashed line collapse although the warming stays below the equilibrium tipping point. For a soft mantle, the boundary follows the dashed line at all rates. For a stiff mantle, it drops towards the dotted line at high rates, which marks the tipping point of a bed that never rebounds. This is the toy-model equivalent of Fig. 3 in the paper.</p>
+<div class="rt-box">
+<p><span class="rt-box-title">Interactive toy model of rate-induced tipping</span></p>
 <div id="rt-lab" class="rt-lab">
 
+</div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">

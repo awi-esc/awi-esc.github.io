@@ -1,5 +1,5 @@
 /* Figures for the rate-induced tipping highlight */
-.rt-hero, .rt-lab {
+.rt-box {
   --rt-ice: #f4f9fd;
   --rt-ice-edge: #2f7fc1;
   --rt-ocean: #c4dbec;
@@ -8,6 +8,8 @@
   --rt-bed-fill: #eadbc8;
   --rt-ok: #3a78b5;
   --rt-tip: #d4683d;
+  --rt-ok-cell: #7fa7cf;
+  --rt-tip-cell: #e39d81;
   --rt-ink: #18576e;
   --rt-muted: #6b7f88;
   --rt-grid: #e3e9ec;
@@ -16,7 +18,7 @@
 }
 
 /* Cross-section */
-.rt-xs { display: block; }
+.rt-xs { display: block; background: #fff; border-radius: 6px; }
 .rt-ice { fill: var(--rt-ice); stroke: var(--rt-ice-edge); stroke-width: 2; stroke-linejoin: round; }
 .rt-ocean { fill: var(--rt-ocean); }
 .rt-sea { stroke: var(--rt-sea); stroke-width: 1.5; fill: none; }
@@ -55,10 +57,10 @@
 .rt-key { display: inline-block; width: 14px; height: 14px; margin-right: 6px; vertical-align: -2px; border-radius: 3px; }
 .rt-key-bed0 { height: 0; border-top: 2px dashed var(--rt-bed); border-radius: 0; vertical-align: 4px; opacity: 0.7; }
 .rt-key-gl { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--rt-sea); background: #fff; }
-.rt-key-ok { background: var(--rt-ok); }
-.rt-key-tip { background: var(--rt-tip); }
+.rt-key-ok { background: var(--rt-ok-cell); }
+.rt-key-tip { background: var(--rt-tip-cell); }
 .rt-key-dash { height: 0; width: 22px; border-top: 2px dashed var(--rt-ink); border-radius: 0; vertical-align: 4px; }
-.rt-key-vline { position: relative; background: var(--rt-ok); }
+.rt-key-vline { position: relative; background: var(--rt-ok-cell); }
 .rt-key-vline::after { content: ""; position: absolute; left: 6px; top: 1px; bottom: 1px; border-left: 2px dashed #fff; }
 .rt-key-dot { height: 0; width: 22px; border-top: 2px dotted var(--rt-ink); border-radius: 0; vertical-align: 4px; }
 
@@ -72,12 +74,18 @@
 .rt-btn:focus-visible { outline: 2px solid var(--rt-ink); outline-offset: 2px; }
 
 /* Lab */
+/* Titled inset boxes around the hero and the model */
+.rt-box { margin: 1.5rem 0; padding: 18px 22px 16px; background: var(--rt-panel); border-radius: 8px; }
+.rt-box > p:first-child { margin: 0 0 10px; }
+.rt-box-title { font-size: 1.05rem; font-weight: 600; color: var(--rt-ink); }
+.rt-box .rt-caption { margin: 10px 0 0; }
+.rt-box .rt-caption p { margin: 0; }
+
 .rt-lab {
   display: grid; gap: 24px 28px;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   grid-template-areas: "controls fig" "map fig";
   grid-template-rows: auto 1fr;
-  padding: 22px; background: var(--rt-panel); border-radius: 8px;
 }
 .rt-controls { grid-area: controls; }
 .rt-lab-fig { grid-area: fig; }
@@ -126,8 +134,8 @@
 /* Map */
 .rt-map-fig { position: relative; }
 .rt-cell { fill: #e9eef0; cursor: pointer; }
-.rt-cell-ok { fill: var(--rt-ok); }
-.rt-cell-tip { fill: var(--rt-tip); }
+.rt-cell-ok { fill: var(--rt-ok-cell); }
+.rt-cell-tip { fill: var(--rt-tip-cell); }
 .rt-cell:hover { stroke: var(--rt-ink); stroke-width: 1.5; }
 .rt-map-ref { stroke: var(--rt-ink); stroke-width: 2; stroke-dasharray: 7 5; pointer-events: none; }
 .rt-map-ref-dot { stroke-dasharray: 2 4; stroke-linecap: round; }
@@ -138,6 +146,7 @@
 .rt-legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; font-size: 13px; line-height: 1.4; color: var(--rt-muted); }
 
 @media screen and (max-width: 760px) {
-  .rt-lab { grid-template-columns: 1fr; grid-template-areas: "controls" "fig" "map"; grid-template-rows: auto; padding: 16px; gap: 18px; }
+  .rt-box { padding: 14px 14px 12px; }
+  .rt-lab { grid-template-columns: 1fr; grid-template-areas: "controls" "fig" "map"; grid-template-rows: auto; gap: 18px; }
   .rt-presets { flex-direction: row; flex-wrap: wrap; }
 }
