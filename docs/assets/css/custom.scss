@@ -340,31 +340,7 @@ h3 + .pub { margin-top: 0.35rem; }
   .word-cloud .w3 { font-size: 1.35rem; }
 }
 
-// Research highlights — headline numbers, figure credits and citation box
-.hl-numbers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin: 0 0 2rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid $border-color;
-  border-bottom: 1px solid $border-color;
-}
-.hl-number p { margin: 0; }
-.hl-number-value {
-  display: block;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.1;
-  color: $awi-blue;
-}
-.hl-number-label {
-  display: block;
-  margin-top: 0.35rem;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: $awi-gray;
-}
+// Research highlights — publication date, figure credits and citation box
 .hl-credit {
   display: block;
   margin-top: 0.25rem;
@@ -389,3 +365,26 @@ h3 + .pub { margin-top: 0.35rem; }
 }
 // On pages with a subtitle, the description is only used for listing cards
 .quarto-title:has(.subtitle) + div .description { display: none; }
+
+// Highlight pages: publication date on one line, right-aligned above the title
+.highlight-page #title-block-header {
+  display: flex;
+  flex-direction: column;
+}
+.highlight-page #title-block-header.quarto-title-block.default .quarto-title-meta {
+  order: -1;
+  align-self: flex-end;
+  display: flex;
+  margin: 0 0 0.25rem;
+}
+.highlight-page .quarto-title-meta > div {
+  display: flex;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+.highlight-page .quarto-title-meta-heading,
+.highlight-page .quarto-title-meta-contents p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: $awi-gray;
+}
