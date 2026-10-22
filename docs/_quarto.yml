@@ -20,6 +20,8 @@ website:
         href: people/index.qmd
       - text: Research
         href: research.qmd
+      - text: Highlights
+        href: highlights/index.qmd
       - text: Publications
         href: publications/index.qmd
       - text: For students
