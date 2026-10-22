@@ -14,7 +14,6 @@ website:
     title: false
     logo: assets/logo.png
     logo-alt: "AWI Earth System Complexity"
-    logo-href: index.html
     left:
       - text: People
         href: people/index.qmd
