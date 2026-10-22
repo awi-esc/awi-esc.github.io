@@ -5,7 +5,8 @@ subtitle: >-
   Below East Antarctica this rebound is slow. In new simulations led by
   [Jan Swierczek-Jereczek](https://github.com/JanJereczek), two large East
   Antarctic basins collapse at up to 0.5 °C less warming than equilibrium
-  simulations suggest.
+  simulations suggest. This means that not just how much, but how *fast* the
+  Earth warms is important for Antarctic stability.
 description: >-
   When warming outpaces the slow rebound of the bedrock, the Recovery and
   Aurora basins can collapse below their equilibrium tipping point.
@@ -52,11 +53,11 @@ The timing of the uplift is therefore important. If the ice retreats faster than
 
 ## What the simulations show
 
-Jan coupled the ice-sheet model Yelmo to FastIsostasy, a regional model of glacial isostatic adjustment that resolves the lateral variations of the lithosphere and mantle. We sampled the uncertainty in mantle viscosity with five fields, from 2σ below to 2σ above the nominal estimate. The experiments add up to about 100 Myr of model time at 16 km resolution. This is only feasible because FastIsostasy is several orders of magnitude faster than conventional 3D models of glacial isostatic adjustment.
+We coupled the ice-sheet model Yelmo to FastIsostasy, a regional model of glacial isostatic adjustment that resolves the lateral variations of the lithosphere and mantle. We sampled the uncertainty in mantle viscosity with five fields, from 2σ below to 2σ above the nominal estimate. The experiments add up to about 100 Myr of model time at 16 km resolution. This large number of simulations was needed to study the system systematically for different warming levels, warming rates and mantle viscosities. It is only feasible because FastIsostasy is several orders of magnitude faster than conventional 3D models of glacial isostatic adjustment.
 
-Rate-induced tipping is absent in West Antarctica and substantial in East Antarctica. Quasi-equilibrium simulations first give the bifurcation points of the five largest marine basins. Forcing steps and ramps then give the lowest warming that collapses each basin. The difference between the two is zero for the West Antarctic ice sheet, up to about 0.15 °C for the Wilkes basin and up to 0.3 °C and 0.4 °C for the Recovery and the inner Aurora basin, respectively. Including the shift of the bifurcation point with viscosity, the critical warming of the Recovery and Aurora basins decreases by up to 0.5 °C.
+Rate-induced tipping is absent in West Antarctica and substantial in East Antarctica. Quasi-equilibrium simulations first give the bifurcation points of the five largest marine basins. Forcing steps and ramps then give the lowest warming that collapses each basin. The difference between the two is zero for the West Antarctic ice sheet, up to about 0.15 °C for the Wilkes basin and up to 0.3 °C and 0.4 °C for the Recovery and the inner Aurora basin, respectively. In addition, a stiffer mantle lowers the bifurcation point itself by up to about 0.2 °C. Compared with the bifurcation point for the softest mantle, the critical warming of the Recovery and Aurora basins thus decreases by up to 0.5 °C in total.
 
-The difference between West and East stems from the mantle viscosity and from the magnitude of the uplift before the instability sets in. Below West Antarctica, the mantle is soft, the ice thins little before the onset of retreat and the bedrock rises by only about 1.5 m over the first few thousand years. In the Recovery and Aurora basins, it rises by up to 150–170 m over the same period, so a delay of this uplift has a large effect. This suggests a general rule: a lagging stabilizing feedback can only cause rate-induced tipping if it is substantial in equilibrium before the instability sets in.
+The difference between West and East stems from the mantle viscosity and from the magnitude of the uplift before the instability sets in. Below West Antarctica, the mantle is soft, the ice thins little before the onset of retreat and the bedrock rises by only about 1.5 m over the first few thousand years. In the Recovery and Aurora basins, it rises by up to 150–170 m over the same period, so a delay of this uplift has a large effect. This suggests a general rule: a delayed stabilizing feedback can only cause rate-induced tipping if, without the delay, it would already act strongly before the instability sets in. For the Antarctic basins, this means a bedrock uplift on the order of 100 m before the onset of retreat, rather than a few metres.
 
 The warming rate needed is small. In the Recovery basin, the full effect is reached at about 0.07 °C per century, since the ice sheet itself cannot retreat faster than its own dynamics allow. The mean warming rate since pre-industrial times is about 1 °C per century, and high-emission scenarios reach about 5 °C per century. Thresholds derived from equilibrium simulations thus likely overestimate the warming that the Recovery and Aurora basins can sustain. Crossing such a threshold, however, does not imply an immediate collapse. The retreat unfolds over millennia and could be avoided by a sufficiently fast return to cooler conditions.
 
@@ -64,13 +65,9 @@ The warming rate needed is small. In the Recovery basin, the full effect is reac
 
 The model below is a toy version of the mechanism. It represents a single grounding line on a bed with a sill and a deep basin inland, with a bedrock that rises with a delay. Each run starts from the same present-day state, warms at the chosen rate up to the chosen level and then holds that level. Start with the stiff mantle at 2.9 °C and 1 °C per century, then switch to the soft mantle.
 
+The map below the controls shows the outcome of all combinations of warming rate and level for the selected mantle response time, with one simulation per square. Click a square to run it. Orange squares below the dashed line collapse although the warming stays below the equilibrium tipping point. For a soft mantle, the boundary follows the dashed line at all rates. For a stiff mantle, it drops towards the dotted line at high rates, which marks the tipping point of a bed that never rebounds. This is the toy-model equivalent of Fig. 3 in the paper.
+
 <div id="rt-lab" class="rt-lab"></div>
-
-### Rate versus amount of warming
-
-Each square in the map is one simulation with the selected mantle response time. Click a square to run it above. Orange squares below the dashed line collapse although the warming stays below the equilibrium tipping point. For a soft mantle, the boundary follows the dashed line at all rates. For a stiff mantle, it drops towards the dotted line at high rates, which marks the tipping point of a bed that never rebounds. This is the toy-model equivalent of Fig. 3 in the paper.
-
-<div id="rt-map" class="rt-map"></div>
 
 ::: {.callout-note collapse="true" appearance="simple"}
 ## How the toy model works
