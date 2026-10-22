@@ -219,9 +219,9 @@
     const svg = el("svg", { class: "rt-xs", role: "img", "aria-label": opts.label || "Ice-sheet cross-section" });
     container.appendChild(svg);
     const g = {
-      bedFill: el("path", { class: "rt-bed-fill" }, svg),
       ocean: el("path", { class: "rt-ocean" }, svg),
       sea: el("path", { class: "rt-sea" }, svg),
+      bedFill: el("path", { class: "rt-bed-fill" }, svg),
       bed0: el("path", { class: "rt-bed0" }, svg),
       ice: el("path", { class: "rt-ice" }, svg),
       bed: el("path", { class: "rt-bed" }, svg),
@@ -264,18 +264,63 @@
     return { layout: layout, update: update, svg: svg };
   }
 
-  // Runs fn(progress in [0,1]) over `ms`, then calls done
-  function animate(ms, fn, done) {
-    let start = null, id = null;
-    function frame(ts) {
-      if (start === null) start = ts;
-      const f = Math.min((ts - start) / ms, 1);
-      fn(f);
-      if (f < 1) id = requestAnimationFrame(frame);
-      else if (done) done();
+  // Play/Pause, Reset and a time slider driving draw(progress in [0,1], playing).
+  // A full run takes `duration` ms; label(progress) gives the time readout.
+  function Player(container, duration) {
+    container.classList.add("rt-player");
+    container.innerHTML =
+      '<button type="button" class="rt-btn rt-play"></button>' +
+      '<button type="button" class="rt-btn rt-btn-quiet rt-reset">Reset</button>' +
+      '<input type="range" class="rt-scrub" min="0" max="1000" step="1" value="0" aria-label="Simulation time">' +
+      '<span class="rt-time"></span>';
+    const btn = container.querySelector(".rt-play");
+    const scrub = container.querySelector(".rt-scrub");
+    const time = container.querySelector(".rt-time");
+    let f = 0, playing = false, id = null, last = null, draw = null, label = null;
+
+    function render() {
+      btn.textContent = playing ? "❚❚ Pause" : f >= 1 ? "▶ Replay" : "▶ Play";
+      scrub.value = Math.round(f * 1000);
+      if (draw) { time.textContent = label(f); draw(f, playing); }
     }
-    id = requestAnimationFrame(frame);
-    return function cancel() { if (id) cancelAnimationFrame(id); };
+    function frame(ts) {
+      if (last !== null) f = Math.min(1, f + (ts - last) / duration);
+      last = ts;
+      if (f >= 1) playing = false;
+      render();
+      if (playing) id = requestAnimationFrame(frame);
+    }
+    function play() {
+      if (f >= 1) f = 0;
+      playing = true;
+      last = null;
+      id = requestAnimationFrame(frame);
+      render();
+    }
+    function pause() {
+      playing = false;
+      if (id) cancelAnimationFrame(id);
+      render();
+    }
+    function seek(g) { pause(); f = g; render(); }
+
+    btn.addEventListener("click", function () { if (playing) pause(); else play(); });
+    container.querySelector(".rt-reset").addEventListener("click", function () { seek(0); });
+    scrub.addEventListener("input", function () { seek(+scrub.value / 1000); });
+
+    return {
+      // Show a new run at its start, without playing it
+      load: function (drawFn, labelFn) { draw = drawFn; label = labelFn; seek(0); },
+      play: play,
+      seek: seek,
+      redraw: render,
+    };
+  }
+
+  function frameIndex(rec, f) { return Math.min(rec.t.length - 1, Math.floor(f * (rec.t.length - 1))); }
+  function yearLabel(rec, f) {
+    return "Year " + Math.round(rec.t[frameIndex(rec, f)]).toLocaleString("en") +
+      " of " + Math.round(rec.tEnd).toLocaleString("en");
   }
 
   // -------------------------------------------------------------------
@@ -288,11 +333,10 @@
       { tau: 10000, title: "Stiff mantle: the bed rebounds slowly", note: "like the Recovery and Aurora basins" },
     ];
     root_.innerHTML =
-      '<div class="rt-hero-status"><span class="rt-hero-clock"></span>' +
-      '<span class="rt-hero-forcing">Global warming of ' + T.toFixed(1) + " °C, reached at " + rate + " °C per century: " +
-      "below the equilibrium tipping point of " + TC.toFixed(1) + " °C</span>" +
-      '<button type="button" class="rt-btn rt-btn-quiet rt-hero-replay">Replay</button></div>';
-    const clock = root_.querySelector(".rt-hero-clock");
+      '<p class="rt-hero-forcing">Global warming of ' + T.toFixed(1) + " °C, reached at " + rate + " °C per century: " +
+      "below the equilibrium tipping point of " + TC.toFixed(1) + " °C</p>" +
+      '<div class="rt-hero-player"></div>';
+    const player = Player(root_.querySelector(".rt-hero-player"), 9000);
     lanes.forEach(function (lane) {
       lane.rec = simulate(T, rate, lane.tau, { tEnd: tEnd, nrec: 480 });
       const box = document.createElement("div");
@@ -311,9 +355,7 @@
     root_.appendChild(foot);
 
     function draw(f) {
-      const n = lanes[0].rec.t.length;
-      const i = Math.min(n - 1, Math.floor(f * (n - 1)));
-      clock.textContent = "Year " + Math.round(lanes[0].rec.t[i]).toLocaleString("en");
+      const i = frameIndex(lanes[0].rec, f);
       lanes.forEach(function (lane) {
         lane.xs.update(lane.rec.s[i], lane.rec.u[i]);
         const done = f >= 1;
@@ -325,25 +367,19 @@
       });
     }
 
-    let cancel = null, timer = null;
-    function play() {
-      if (cancel) cancel();
-      clearTimeout(timer);
-      if (REDUCED) { draw(1); return; }
-      cancel = animate(9000, draw, function () { timer = setTimeout(play, 4000); });
-    }
-    root_.querySelector(".rt-hero-replay").addEventListener("click", play);
-    window.addEventListener("resize", function () { lanes.forEach(function (l) { l.xs.layout(); }); });
+    player.load(draw, function (f) { return yearLabel(lanes[0].rec, f); });
+    window.addEventListener("resize", function () { lanes.forEach(function (l) { l.xs.layout(); }); player.redraw(); });
 
-    // Start when scrolled into view
-    if ("IntersectionObserver" in window && !REDUCED) {
-      draw(0);
+    // Play once when scrolled into view; with reduced motion, show the end state
+    if (REDUCED) {
+      player.seek(1);
+    } else if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { io.disconnect(); play(); }
+        if (entries[0].isIntersecting) { io.disconnect(); player.play(); }
       }, { threshold: 0.3 });
       io.observe(root_);
     } else {
-      play();
+      player.play();
     }
   }
 
@@ -354,7 +390,7 @@
   const TAU_LOG = [1.5, 4.5]; // log10 yr
   const T_RANGE = [2.3, 3.4];
 
-  function initLab(labRoot, mapRoot) {
+  function initLab(labRoot) {
     const state = { T: 2.9, rate: 1.0, tau: 10000 };
 
     labRoot.innerHTML =
@@ -375,8 +411,13 @@
       '</div>' +
       '<div class="rt-lab-fig">' +
       '  <p class="rt-outcome" aria-live="polite"></p>' +
+      '  <div class="rt-lab-player"></div>' +
       '  <div class="rt-lab-xs"></div>' +
       '  <div class="rt-ts"></div>' +
+      '</div>' +
+      '<div class="rt-lab-map">' +
+      '  <p class="rt-map-title">Outcome of every combination <span>(click a square to run it)</span></p>' +
+      '  <div class="rt-map"></div>' +
       '</div>';
 
     const inputs = {
@@ -392,7 +433,8 @@
     const outcome = labRoot.querySelector(".rt-outcome");
     const xs = CrossSection(labRoot.querySelector(".rt-lab-xs"), { label: "Cross-section of the simulated ice sheet" });
     const ts = TimeSeries(labRoot.querySelector(".rt-ts"));
-    const map = RateMap(mapRoot, function (T, rate) { setState({ T: T, rate: rate }); });
+    const player = Player(labRoot.querySelector(".rt-lab-player"), 6000);
+    const map = RateMap(labRoot.querySelector(".rt-map"), function (T, rate) { setState({ T: T, rate: rate }); });
 
     function syncInputs() {
       inputs.T.value = state.T;
@@ -403,18 +445,18 @@
       outputs.tau.textContent = fmtTau(state.tau);
     }
 
-    let cancel = null, debounce = null, lastTau = null;
+    let debounce = null, lastTau = null;
     function run() {
       const rec = simulate(state.T, state.rate, state.tau, { tAfter: 20000, nrec: 500 });
-      if (cancel) cancel();
       const below = state.T < TC;
-      outcome.className = "rt-outcome";
-      outcome.textContent = "Running…";
-      function finish() {
-        const n = rec.t.length - 1;
-        xs.update(rec.s[n], rec.u[n]);
-        ts.draw(rec, n);
-        if (rec.collapsed) {
+      function draw(f, playing) {
+        const i = frameIndex(rec, f);
+        xs.update(rec.s[i], rec.u[i]);
+        ts.draw(rec, i);
+        if (f < 1) {
+          outcome.className = "rt-outcome";
+          outcome.textContent = playing ? "Running…" : f > 0 ? "Paused." : "Ready: press Play to run this simulation.";
+        } else if (rec.collapsed) {
           outcome.className = "rt-outcome rt-outcome-tip";
           outcome.textContent = "Tipped after " + fmtTime(rec.tCollapse) + (below
             ? ", although the warming stays below the equilibrium tipping point of " + TC.toFixed(2) + " °C. This is rate-induced tipping."
@@ -424,14 +466,7 @@
           outcome.textContent = "Stable: the grounding line holds at the sill" + (below ? "." : " for now, but this warming exceeds the equilibrium tipping point.");
         }
       }
-      if (REDUCED) { finish(); }
-      else {
-        cancel = animate(3500, function (f) {
-          const i = Math.floor(f * (rec.t.length - 1));
-          xs.update(rec.s[i], rec.u[i]);
-          ts.draw(rec, i);
-        }, finish);
-      }
+      player.load(draw, function (f) { return yearLabel(rec, f); });
       map.mark(state.T, state.rate);
       if (state.tau !== lastTau) { lastTau = state.tau; map.compute(state.tau); }
     }
@@ -449,7 +484,7 @@
     labRoot.querySelectorAll("[data-tau]").forEach(function (b) {
       b.addEventListener("click", function () { setState({ tau: +b.getAttribute("data-tau") }); });
     });
-    window.addEventListener("resize", function () { xs.layout(); ts.layout(); map.layout(); });
+    window.addEventListener("resize", function () { xs.layout(); ts.layout(); map.layout(); player.redraw(); });
 
     syncInputs();
     run();
@@ -585,6 +620,7 @@
       '  <span><span class="rt-key rt-key-tip"></span>Basin collapses</span>' +
       '  <span><span class="rt-key rt-key-dash"></span>Equilibrium tipping point</span>' +
       '  <span><span class="rt-key rt-key-dot"></span>Tipping point if the bed never rebounded</span>' +
+      '  <span><span class="rt-key rt-key-vline"></span>~1 °C per century (since 1850) and ~5 °C per century (high emissions)</span>' +
       '</div>';
     const fig = container.querySelector(".rt-map-fig");
     const svg = el("svg", { class: "rt-map-svg", role: "img", "aria-label": "Outcome of simulations as a function of rate and amount of warming" });
@@ -599,14 +635,14 @@
     for (let i = 0; i < NX; i++) rates.push(RATE_LOG[0] + (RATE_LOG[1] - RATE_LOG[0]) * (i + 0.5) / NX);
     for (let j = 0; j < NY; j++) temps.push(T_RANGE[0] + (T_RANGE[1] - T_RANGE[0]) * (j + 0.5) / NY);
     const cache = {};
-    let grid = null, job = 0, W = 0, H = 0, M = { l: 52, r: 14, t: 44, b: 46 }, marker = null, cells = null, mk = null;
+    let grid = null, job = 0, W = 0, H = 0, M = { l: 52, r: 14, t: 30, b: 46 }, marker = null, cells = null, mk = null;
 
     const Xl = function (lr) { return M.l + (lr - RATE_LOG[0]) / (RATE_LOG[1] - RATE_LOG[0]) * (W - M.l - M.r); };
     const Yt = function (T) { return M.t + (T_RANGE[1] - T) / (T_RANGE[1] - T_RANGE[0]) * (H - M.t - M.b); };
 
     function layout() {
       W = fig.clientWidth;
-      H = Math.round(Math.max(260, Math.min(420, W * 0.5)));
+      H = Math.round(Math.max(260, Math.min(420, W * 0.75)));
       M.l = W < 480 ? 40 : 52;
       svg.setAttribute("viewBox", "0 0 " + W + " " + H);
       svg.setAttribute("width", W);
@@ -630,14 +666,13 @@
       [2.4, 2.6, 2.8, 3.0, 3.2, 3.4].forEach(function (T) {
         el("text", { x: M.l - 6, y: Yt(T) + 4, class: "rt-tick", "text-anchor": "end" }, svg).textContent = T.toFixed(1);
       });
-      el("text", { x: M.l, y: M.t - 26, class: "rt-ax-title" }, svg).textContent = "Global warming (°C)";
+      el("text", { x: M.l, y: M.t - 12, class: "rt-ax-title" }, svg).textContent = "Global warming (°C)";
       // Reference lines
       el("line", { x1: M.l, x2: W - M.r, y1: Yt(TC), y2: Yt(TC), class: "rt-map-ref" }, svg);
       el("line", { x1: M.l, x2: W - M.r, y1: Yt(TC_RIGID), y2: Yt(TC_RIGID), class: "rt-map-ref rt-map-ref-dot" }, svg);
-      [[1, "since 1850"], [5, "high emissions"]].forEach(function (m) {
-        const x = Xl(Math.log10(m[0]));
-        el("line", { x1: x, x2: x, y1: M.t - 4, y2: yb, class: "rt-map-vline" }, svg);
-        if (W >= 480) el("text", { x: x, y: M.t - 8, class: "rt-map-vlbl", "text-anchor": "middle" }, svg).textContent = m[1];
+      [1, 5].forEach(function (r) {
+        const x = Xl(Math.log10(r));
+        el("line", { x1: x, x2: x, y1: M.t, y2: yb, class: "rt-map-vline" }, svg);
       });
       mk = el("circle", { r: 7, class: "rt-map-marker", visibility: "hidden" }, svg);
       if (marker) mark(marker[0], marker[1]);
@@ -707,8 +742,8 @@
   function init() {
     const hero = document.getElementById("rt-hero");
     if (hero) initHero(hero);
-    const lab = document.getElementById("rt-lab"), map = document.getElementById("rt-map");
-    if (lab && map) initLab(lab, map);
+    const lab = document.getElementById("rt-lab");
+    if (lab) initLab(lab);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
