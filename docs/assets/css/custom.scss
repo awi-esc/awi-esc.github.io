@@ -339,3 +339,53 @@ h3 + .pub { margin-top: 0.35rem; }
   .word-cloud .w2 { font-size: 1.1rem; }
   .word-cloud .w3 { font-size: 1.35rem; }
 }
+
+// Research highlights — headline numbers, figure credits and citation box
+.hl-numbers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 0 0 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+.hl-number p { margin: 0; }
+.hl-number-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: $awi-blue;
+}
+.hl-number-label {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: $awi-gray;
+}
+.hl-credit {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: $awi-gray;
+}
+.hl-cite {
+  margin: 2.5rem 0 1rem;
+  padding: 1rem 1.25rem 0.85rem;
+  background: $surface-soft;
+  border-left: 4px solid $accent;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.hl-cite .repo-link { margin-right: 0.35rem; }
+.hl-cite-heading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $awi-gray;
+}
+// On pages with a subtitle, the description is only used for listing cards
+.quarto-title:has(.subtitle) + div .description { display: none; }

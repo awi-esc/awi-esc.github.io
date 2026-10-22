@@ -1,0 +1,13 @@
+---
+title: "Research highlights"
+listing:
+  contents: "*/index.qmd"
+  type: grid
+  sort: "date desc"
+  fields: [image, date, title, description]
+  image-height: 180px
+  grid-columns: 3
+---
+
+A closer look at recent results from the group, with figures and interactive
+models.

@@ -12,6 +12,9 @@ docs/                          Quarto site source
   _quarto.yml                  site config (navbar, theme)
   index.qmd                    landing page
   research.qmd
+  highlights/
+    index.qmd                  listing of all highlights
+    <slug>/index.qmd           one research highlight (+ figures, scripts)
   students.qmd                 "For students" page (includes _topics.qmd)
   _topics.qmd                  AUTO-GENERATED — do not edit
   publications/
@@ -90,6 +93,13 @@ or `topics/`, re-run the corresponding build script.
   [docs/publications/references.bib](docs/publications/references.bib), then
   switch the publications page front-matter to the bib-driven version (see the
   comment in [docs/publications/index.qmd](docs/publications/index.qmd)).
+- **A research highlight**: create `docs/highlights/<slug>/index.qmd` with
+  `title`, `subtitle`, `description`, `date` and `image` (the card thumbnail)
+  in the front matter; the Highlights page and the landing page list it
+  automatically. Put figures and any page-specific `css`/`resources` (e.g.,
+  JavaScript for interactive figures) in the same folder. Reusable blocks
+  (`.hl-numbers`, `.hl-cite`, `.hl-credit`) are styled in `custom.scss`; see
+  `docs/highlights/rtip-antarctica/` for an example.
 - **A research theme**: edit [docs/research.qmd](docs/research.qmd), or add a
   sub-page under `docs/research/` and link it from there.
 - **Site colours / styling**: edit

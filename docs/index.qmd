@@ -2,6 +2,15 @@
 title: ""
 pagetitle: "AWI Earth System Complexity"
 page-layout: full
+listing:
+  id: latest-highlights
+  contents: "highlights/*/index.qmd"
+  type: grid
+  sort: "date desc"
+  max-items: 3
+  fields: [image, date, title, description]
+  image-height: 160px
+  grid-columns: 3
 ---
 
 ::: {.hero style="background-image: url('assets/img/header-antarctica.jpg');"}
@@ -17,6 +26,13 @@ on long timescales, using numerical models and paleo data analysis.
 
 [[Map: fesmc/cryosphere-maps](resources.qmd)]{.hero-credit}
 :::
+
+## Research highlights
+
+::: {#latest-highlights}
+:::
+
+[All highlights](highlights/index.qmd)
 
 ## Some publications
 

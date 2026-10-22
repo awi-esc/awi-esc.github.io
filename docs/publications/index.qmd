@@ -23,6 +23,10 @@ Grusdt, B. et al.: Strategies for learning from model ensembles, in prep. <span 
 </div>
 
 <div class="pub">
+Gutiérrez-González, L., Robinson, A., Alvarez-Solas, J., Tabone, I., Swierczek-Jereczek, J., Moreno-Parada, D., and Montoya, M.: Hysteresis of the Greenland ice sheet from the Last Glacial Maximum to the future, *The Cryosphere*, 20, 1139–1162, [doi.org/10.5194/tc-20-1139-2026](https://doi.org/10.5194/tc-20-1139-2026), 2026.
+</div>
+
+<div class="pub">
 Hebert, R. et al.: Inferring climate from pollen, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
 </div>
 
@@ -39,7 +43,23 @@ Höse, A. et al.: Probabilistic estimates of AMOC evolution under future warming
 </div>
 
 <div class="pub">
+Juarez-Martinez, A., Robinson, A., Swierczek-Jereczek, J., Blasco, J., Alvarez-Solas, J., and Montoya, M.: Parameterizing tidal-water intrusions in long-term Antarctic ice-sheet projections, *The Cryosphere*, 20, 5345–5363, [doi.org/10.5194/tc-20-5345-2026](https://doi.org/10.5194/tc-20-5345-2026), 2026.
+</div>
+
+<div class="pub">
+Kypke, K., Montoya, M., Robinson, A., Alvarez-Solas, J., Swierczek-Jereczek, J., and Ditlevsen, P.: Chaotic fluctuations in Greenland ice streams limit predictability of ice sheet collapse, *Earth Syst. Dynam.*, 17, 769–794, [doi.org/10.5194/esd-17-769-2026](https://doi.org/10.5194/esd-17-769-2026), 2026.
+</div>
+
+<div class="pub">
 Perrette, M. et al.: Robust reconstruction of the LGM climate, in prep. <span class="pub-status">in prep</span> <span class="pub-project">FORCLIMA</span>
+</div>
+
+<div class="pub">
+Pérez-Montero, S., Alvarez-Solas, J., Swierczek-Jereczek, J., Moreno-Parada, D., Robinson, A., and Montoya, M.: Exploring the Mid-Pleistocene transition with a simple physical model, *Clim. Past*, 22, 625–646, [doi.org/10.5194/cp-22-625-2026](https://doi.org/10.5194/cp-22-625-2026), 2026.
+</div>
+
+<div class="pub">
+Swierczek-Jereczek, J., Blasco, J., Robinson, A., Alvarez-Solas, J., and Montoya, M.: Antarctic marine-based ice destabilized when warming outpaces solid-Earth feedbacks, *Nature Geoscience*, [doi.org/10.1038/s41561-026-02117-8](https://doi.org/10.1038/s41561-026-02117-8), 2026. <span class="pub-project">FORCLIMA</span> <span class="pub-project">ClimTip</span>
 </div>
 
 <div class="pub">
@@ -56,7 +76,69 @@ Wang, S., Bochow, N., Boers, N., Shin, Y., Yun, K. S., Park, J. Y., …, and Kug
 
 ### 2025
 
-_No entries yet._
+<div class="pub">
+Fischer, E. M., Bador, M., Huser, R., Kendon, E. J., Robinson, A., and Sippel, S.: Record-breaking extremes in a warming climate, *Nat. Rev. Earth Environ.*, [doi.org/10.1038/s43017-025-00681-y](https://doi.org/10.1038/s43017-025-00681-y), 2025.
+</div>
+
+<div class="pub">
+Moreno-Parada, D., Robinson, A., Montoya, M., and Alvarez-Solas, J.: Description and validation of the ice-sheet model Nix v1.0, *Geosci. Model Dev.*, 18, 3895–3919, [doi.org/10.5194/gmd-18-3895-2025](https://doi.org/10.5194/gmd-18-3895-2025), 2025.
+</div>
+
+<div class="pub">
+Pérez-Montero, S., Alvarez-Solas, J., Swierczek-Jereczek, J., Moreno-Parada, D., Robinson, A., and Montoya, M.: A simple physical model for glacial cycles, *Earth Syst. Dynam.*, 16, 915–937, [doi.org/10.5194/esd-16-915-2025](https://doi.org/10.5194/esd-16-915-2025), 2025.
+</div>
+
+### 2024
+
+<div class="pub">
+Blasco, J., Tabone, I., Moreno-Parada, D., Robinson, A., Alvarez-Solas, J., Pattyn, F., and Montoya, M.: Antarctic tipping points triggered by the mid-Pliocene warm climate, *Clim. Past*, 20, 1919–1938, [doi.org/10.5194/cp-20-1919-2024](https://doi.org/10.5194/cp-20-1919-2024), 2024.
+</div>
+
+<div class="pub">
+Juarez-Martinez, A., Blasco, J., Robinson, A., Montoya, M., and Alvarez-Solas, J.: Antarctic sensitivity to oceanic melting parameterizations, *The Cryosphere*, 18, 4257–4283, [doi.org/10.5194/tc-18-4257-2024](https://doi.org/10.5194/tc-18-4257-2024), 2024.
+</div>
+
+<div class="pub">
+Moreno-Parada, D., Robinson, A., Montoya, M., and Alvarez-Solas, J.: Analytical solutions for the advective–diffusive ice column in the presence of strain heating, *The Cryosphere*, 18, 4215–4232, [doi.org/10.5194/tc-18-4215-2024](https://doi.org/10.5194/tc-18-4215-2024), 2024.
+</div>
+
+<div class="pub">
+Petrakopoulou, F. and Robinson, A.: Evaluation of a concentrated solar power plant under meteorological and climatological forcing, *Energy Reports*, 11, 4776–4783, [doi.org/10.1016/j.egyr.2024.04.044](https://doi.org/10.1016/j.egyr.2024.04.044), 2024.
+</div>
+
+<div class="pub">
+Rieckh, T., Born, A., Robinson, A., Law, R., and Gülle, G.: Design and performance of ELSA v2.0: an isochronal model for ice-sheet layer tracing, *Geosci. Model Dev.*, 17, 6987–7000, [doi.org/10.5194/gmd-17-6987-2024](https://doi.org/10.5194/gmd-17-6987-2024), 2024.
+</div>
+
+<div class="pub">
+Seroussi, H., Pelle, T., Lipscomb, W. H., …, Robinson, A., …, and Zwinger, T.: Evolution of the Antarctic Ice Sheet over the next three centuries from an ISMIP6 model ensemble, *Earth's Future*, 12, e2024EF004561, [doi.org/10.1029/2024EF004561](https://doi.org/10.1029/2024EF004561), 2024.
+</div>
+
+<div class="pub">
+Swierczek-Jereczek, J., Montoya, M., Latychev, K., Robinson, A., Alvarez-Solas, J., and Mitrovica, J.: FastIsostasy v1.0 – a regional, accelerated 2D glacial isostatic adjustment (GIA) model accounting for the lateral variability of the solid Earth, *Geosci. Model Dev.*, 17, 5263–5290, [doi.org/10.5194/gmd-17-5263-2024](https://doi.org/10.5194/gmd-17-5263-2024), 2024.
+</div>
+
+<div class="pub">
+Tabone, I., Robinson, A., Montoya, M., and Alvarez-Solas, J.: Holocene thinning in central Greenland controlled by the Northeast Greenland Ice Stream, *Nat. Commun.*, 15, 6434, [doi.org/10.1038/s41467-024-50772-5](https://doi.org/10.1038/s41467-024-50772-5), 2024.
+</div>
+
+### 2023
+
+<div class="pub">
+Bochow, N., Poltronieri, A., Robinson, A., Montoya, M., Rypdal, M., and Boers, N.: Overshooting the critical threshold for the Greenland ice sheet, *Nature*, 622, 528–536, [doi.org/10.1038/s41586-023-06503-9](https://doi.org/10.1038/s41586-023-06503-9), 2023.
+</div>
+
+<div class="pub">
+Malmierca-Vallet, I., Sime, L. C., and the D–O community members: Dansgaard–Oeschger events in climate models: review and baseline Marine Isotope Stage 3 (MIS3) protocol, *Clim. Past*, 19, 915–942, [doi.org/10.5194/cp-19-915-2023](https://doi.org/10.5194/cp-19-915-2023), 2023.
+</div>
+
+<div class="pub">
+Moreno-Parada, D., Alvarez-Solas, J., Blasco, J., Montoya, M., and Robinson, A.: Simulating the Laurentide Ice Sheet of the Last Glacial Maximum, *The Cryosphere*, 17, 2139–2156, [doi.org/10.5194/tc-17-2139-2023](https://doi.org/10.5194/tc-17-2139-2023), 2023.
+</div>
+
+<div class="pub">
+Swierczek-Jereczek, J., Robinson, A., Blasco, J., Alvarez-Solas, J., and Montoya, M.: Time-scale synchronisation of oscillatory responses can lead to non-monotonous R-tipping, *Sci. Rep.*, 13, 2104, [doi.org/10.1038/s41598-023-28771-1](https://doi.org/10.1038/s41598-023-28771-1), 2023.
+</div>
 
 ## Conferences
 
