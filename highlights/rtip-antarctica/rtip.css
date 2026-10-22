@@ -24,7 +24,8 @@
 .rt-bed-fill { fill: var(--rt-bed-fill); }
 .rt-bed0 { stroke: var(--rt-bed); stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; opacity: 0.6; }
 .rt-gl { fill: #fff; stroke: var(--rt-sea); stroke-width: 2; }
-.rt-lbl { font-size: 13px; fill: var(--rt-muted); }
+.rt-lbl { font-size: 13px; fill: var(--rt-muted); paint-order: stroke; stroke: var(--rt-ice); stroke-width: 4px; stroke-linejoin: round; }
+.rt-lbl-bed { stroke: var(--rt-bed-fill); }
 .rt-lbl-ocean { fill: var(--rt-sea); }
 .rt-lbl-bed { fill: var(--rt-bed); }
 
@@ -131,7 +132,9 @@
 .rt-map-ref { stroke: var(--rt-ink); stroke-width: 2; stroke-dasharray: 7 5; pointer-events: none; }
 .rt-map-ref-dot { stroke-dasharray: 2 4; stroke-linecap: round; }
 .rt-map-vline { stroke: #fff; stroke-width: 1.5; stroke-dasharray: 3 3; pointer-events: none; }
-.rt-map-marker { fill: none; stroke: #fff; stroke-width: 3; pointer-events: none; }
+.rt-map-marker { pointer-events: none; }
+.rt-map-marker-ring { fill: none; stroke: #1f2937; stroke-width: 2.5; }
+.rt-map-marker-dot { fill: #1f2937; }
 .rt-legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; font-size: 13px; line-height: 1.4; color: var(--rt-muted); }
 
 @media screen and (max-width: 760px) {
