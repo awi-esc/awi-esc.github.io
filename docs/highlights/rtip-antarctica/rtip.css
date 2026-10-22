@@ -1,5 +1,5 @@
 /* Figures for the rate-induced tipping highlight */
-.rt-hero, .rt-lab, .rt-map {
+.rt-hero, .rt-lab {
   --rt-ice: #f4f9fd;
   --rt-ice-edge: #2f7fc1;
   --rt-ocean: #c4dbec;
@@ -30,15 +30,13 @@
 
 /* Hero */
 .rt-hero { position: relative; }
-.rt-hero-status {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px;
-  margin-bottom: 10px; font-size: 15px; color: var(--rt-muted);
-}
-.rt-hero-clock {
-  font-variant-numeric: tabular-nums; font-weight: 600; color: var(--rt-ink);
-  min-width: 6.5em; font-size: 17px;
-}
-.rt-hero-forcing { flex: 1 1 300px; }
+.rt-hero-forcing { margin: 0 0 4px; font-size: 15px; color: var(--rt-muted); }
+
+/* Play/Pause, Reset and time slider */
+.rt-player { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 6px 0 10px; }
+.rt-play { min-width: 6.8em; }
+.rt-scrub { flex: 1 1 160px; min-width: 120px; accent-color: var(--rt-ice-edge); }
+.rt-time { font-size: 14px; color: var(--rt-muted); font-variant-numeric: tabular-nums; min-width: 10.5em; }
 .rt-lane { margin-bottom: 6px; }
 .rt-lane-title { margin: 8px 0 2px; font-size: 16px; font-weight: 600; color: var(--rt-ink); }
 .rt-lane-note { font-weight: 300; color: var(--rt-muted); }
@@ -59,6 +57,8 @@
 .rt-key-ok { background: var(--rt-ok); }
 .rt-key-tip { background: var(--rt-tip); }
 .rt-key-dash { height: 0; width: 22px; border-top: 2px dashed var(--rt-ink); border-radius: 0; vertical-align: 4px; }
+.rt-key-vline { position: relative; background: var(--rt-ok); }
+.rt-key-vline::after { content: ""; position: absolute; left: 6px; top: 1px; bottom: 1px; border-left: 2px dashed #fff; }
 .rt-key-dot { height: 0; width: 22px; border-top: 2px dotted var(--rt-ink); border-radius: 0; vertical-align: 4px; }
 
 /* Buttons */
@@ -72,9 +72,17 @@
 
 /* Lab */
 .rt-lab {
-  display: grid; grid-template-columns: 260px 1fr; gap: 28px;
+  display: grid; gap: 24px 28px;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  grid-template-areas: "controls fig" "map fig";
+  grid-template-rows: auto 1fr;
   padding: 22px; background: var(--rt-panel); border-radius: 8px;
 }
+.rt-controls { grid-area: controls; }
+.rt-lab-fig { grid-area: fig; }
+.rt-lab-map { grid-area: map; min-width: 0; }
+.rt-map-title { margin: 0 0 6px; font-weight: 600; font-size: 15px; color: var(--rt-ink); }
+.rt-map-title span { font-weight: 300; color: var(--rt-muted); }
 .rt-controls { display: flex; flex-direction: column; gap: 18px; }
 .rt-ctl { display: block; }
 .rt-ctl-name { display: block; font-weight: 600; color: var(--rt-ink); font-size: 15px; }
@@ -123,11 +131,10 @@
 .rt-map-ref { stroke: var(--rt-ink); stroke-width: 2; stroke-dasharray: 7 5; pointer-events: none; }
 .rt-map-ref-dot { stroke-dasharray: 2 4; stroke-linecap: round; }
 .rt-map-vline { stroke: #fff; stroke-width: 1.5; stroke-dasharray: 3 3; pointer-events: none; }
-.rt-map-vlbl { font-size: 12px; fill: var(--rt-muted); pointer-events: none; }
 .rt-map-marker { fill: none; stroke: #fff; stroke-width: 3; pointer-events: none; }
-.rt-legend { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 10px; font-size: 14px; color: var(--rt-muted); }
+.rt-legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; font-size: 13px; line-height: 1.4; color: var(--rt-muted); }
 
 @media screen and (max-width: 760px) {
-  .rt-lab { grid-template-columns: 1fr; padding: 16px; gap: 18px; }
+  .rt-lab { grid-template-columns: 1fr; grid-template-areas: "controls" "fig" "map"; grid-template-rows: auto; padding: 16px; gap: 18px; }
   .rt-presets { flex-direction: row; flex-wrap: wrap; }
 }
