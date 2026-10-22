@@ -138,7 +138,6 @@
     const dx = 2;
     const zb = Math.min(bedZ(s, s, u), -20);  // ice base at the grounding line
     const Hg = -zb * 1.12;                     // flotation thickness
-    const front = Math.min(s + XS.shelf, XS.xmax);
 
     let bed = "", bed0 = "", top = "", base = "", ocean = "";
     const x0 = XS.xmin - 10;
@@ -147,12 +146,15 @@
       bed += (x === x0 ? "M" : "L") + X(x) + "," + Z(zbed);
       bed0 += (x === x0 ? "M" : "L") + X(x) + "," + Z(-depth(x));
       if (x < s) {
-        top += (top ? "L" : "M") + X(x) + "," + Z(0.12 * Hg + 110 * Math.sqrt(s - x));
+        top += (top ? "L" : "M") + X(x) + "," + Z(0.11 * Hg + 110 * (Math.sqrt(s - x + 20) - Math.sqrt(20)));
       }
     }
-    // Floating ice shelf thinning towards the calving front
-    for (let x = s; x <= front + 1e-9; x += dx) {
-      const h = Hg * (1 - 0.7 * (x - s) / XS.shelf);
+    // Floating ice shelf: thins seaward, stays clear of the bed and ends
+    // where it would run aground (e.g., on a bed rising towards a sill)
+    for (let x = s; x <= Math.min(s + XS.shelf, XS.xmax) + 1e-9; x += dx) {
+      const clearance = 15 * Math.min(1, (x - s) / 10);
+      const h = Math.min(Hg * Math.exp(-(x - s) / 120), (-bedZ(x, s, u) - clearance) / 0.89);
+      if (x > s && h < 40) break;
       top += "L" + X(x) + "," + Z(0.11 * h);
       base = "L" + X(x) + "," + Z(-0.89 * h) + base;
     }
@@ -240,7 +242,7 @@
       const p = crossSectionPaths(P.s0, 0, W, H);
       const small = W < 480;
       el("text", { x: 8, y: 18, class: "rt-lbl rt-lbl-ice" }, labels).textContent = "Ice sheet";
-      el("text", { x: W - 8, y: p.Z(0) + 18, class: "rt-lbl rt-lbl-ocean", "text-anchor": "end" }, labels).textContent = "Ocean";
+      el("text", { x: W - 8, y: p.Z(0) - 6, class: "rt-lbl rt-lbl-ocean", "text-anchor": "end" }, labels).textContent = "Ocean";
       el("text", { x: p.X(480), y: H - 8, class: "rt-lbl rt-lbl-bed", "text-anchor": "middle" }, labels).textContent = small ? "Deep basin" : "Deep basin (bed deepens inland)";
       el("text", { x: p.X(P.sill), y: H - 8, class: "rt-lbl rt-lbl-bed", "text-anchor": "middle" }, labels).textContent = "Sill";
       if (last) update(last[0], last[1]);
@@ -553,13 +555,15 @@
         if (p.key === "u") {
           line(S.ue, "rt-line rt-line-ueq");
           line(S.u, "rt-line rt-line-u");
-          // Direct labels at the end of the visible lines
-          const xe = X(r.t[i]);
-          const lblU = el("text", { x: Math.min(xe + 6, W - M.r), y: Y(S.u[i]) + 14, class: "rt-line-lbl rt-line-lbl-u" }, svg);
-          lblU.textContent = "actual";
-          const lblE = el("text", { x: Math.min(xe + 6, W - M.r), y: Y(S.ue[i]) - 6, class: "rt-line-lbl" }, svg);
-          lblE.textContent = "with an instant mantle";
-          if (xe > W * 0.6) { lblU.setAttribute("text-anchor", "end"); lblE.setAttribute("text-anchor", "end"); lblU.setAttribute("x", xe - 6); lblE.setAttribute("x", xe - 6); }
+          // Direct labels at the end of the visible lines, once the run has started
+          if (i >= 0.05 * (r.t.length - 1)) {
+            const xe = X(r.t[i]);
+            const lblU = el("text", { x: Math.min(xe + 6, W - M.r), y: Y(S.u[i]) + 14, class: "rt-line-lbl rt-line-lbl-u" }, svg);
+            lblU.textContent = "actual";
+            const lblE = el("text", { x: Math.min(xe + 6, W - M.r), y: Y(S.ue[i]) - 6, class: "rt-line-lbl" }, svg);
+            lblE.textContent = "with an instant mantle";
+            if (xe > W * 0.6) { lblU.setAttribute("text-anchor", "end"); lblE.setAttribute("text-anchor", "end"); lblU.setAttribute("x", xe - 6); lblE.setAttribute("x", xe - 6); }
+          }
         } else {
           line(S[p.key], "rt-line rt-line-" + p.key);
         }
@@ -674,7 +678,9 @@
         const x = Xl(Math.log10(r));
         el("line", { x1: x, x2: x, y1: M.t, y2: yb, class: "rt-map-vline" }, svg);
       });
-      mk = el("circle", { r: 7, class: "rt-map-marker", visibility: "hidden" }, svg);
+      mk = el("g", { class: "rt-map-marker", visibility: "hidden" }, svg);
+      el("circle", { r: 8.5, class: "rt-map-marker-ring" }, mk);
+      el("circle", { r: 2.5, class: "rt-map-marker-dot" }, mk);
       if (marker) mark(marker[0], marker[1]);
       paint();
       cells.addEventListener("mousemove", hover);
@@ -730,8 +736,7 @@
     function mark(T, rate) {
       marker = [T, rate];
       if (!mk) return;
-      mk.setAttribute("cx", Xl(Math.log10(rate)));
-      mk.setAttribute("cy", Yt(T));
+      mk.setAttribute("transform", "translate(" + Xl(Math.log10(rate)).toFixed(1) + "," + Yt(T).toFixed(1) + ")");
       mk.setAttribute("visibility", T >= T_RANGE[0] && T <= T_RANGE[1] ? "visible" : "hidden");
     }
 
