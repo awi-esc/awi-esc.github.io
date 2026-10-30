@@ -1,7 +1,8 @@
 /* Weighted ensembles: interactive figures for the highlight on
    Grusdt, Perrette and Robinson (2026, Earth Syst. Dynam.).
-   Both figures use synthetic data. They reproduce the behavior of the
-   weighting methods in the paper, not its numbers. */
+   The first figure uses the toy examples of Sect. 5 of the paper, with
+   the data of the paper (we-data.js) but newly drawn noise. The second
+   figure uses synthetic data. */
 (function (root) {
   "use strict";
 
@@ -58,46 +59,53 @@
   // ---------------------------------------------------------------------
   // Toy ensemble of Sect. 5 of the paper
   //
-  // A 1D field along longitude (V points) is observed. Model 1 and model 2
-  // are the observations plus errors, as in the toy examples of the paper.
-  // The ensemble consists of model 1 and n2 identical copies of model 2.
+  // The observations are the ERA5 field of the paper (V points on a 5 degree
+  // grid, from we-data.js). The ensemble consists of model 1 and n2 identical
+  // copies of model 2. In the first two examples, the models are constructed
+  // from the observations and errors from N(0, 2^2). The noise is a different
+  // random draw than in the paper. The third example uses two CMIP6 models.
   // ---------------------------------------------------------------------
-  const V = 180;
-  const LON = Array.from({ length: V }, function (_, k) { return (k + 0.5) * 360 / V; });
-  const OBS = LON.map(function (x) {
-    const r = x * Math.PI / 180;
-    return 12 * Math.cos(r) + 6 * Math.sin(2 * r + 0.7) + 3 * Math.cos(5 * r + 1.3);
-  });
+  const DATA = root.WE_DATA;
+  const NLAT = DATA.lat.length, NLON = DATA.lon.length, V = NLAT * NLON;
+  const OBS = DATA.obs;
+  const AREA = (function () { // area weights, normalized to sum to 1
+    const a = new Array(V);
+    let sum = 0;
+    for (let k = 0; k < V; k++) {
+      a[k] = Math.cos(DATA.lat[Math.floor(k / NLON)] * Math.PI / 180);
+      sum += a[k];
+    }
+    return a.map(function (v) { return v / sum; });
+  })();
 
   function makeScenario(kind) {
+    if (kind === "real") return { m1: DATA.awi, m2: DATA.cesm };
     const rand = rng(1712);
     const m1 = new Array(V), m2 = new Array(V);
     const eps = Array.from({ length: V / 2 }, function () { return 2 * normal(rand); });
     for (let k = 0; k < V; k++) {
-      const e1 = 2 * normal(rand), e2 = normal(rand);
+      const e1 = 2 * normal(rand), e2 = 2 * normal(rand);
       if (kind === "pattern") { // each model is exact in one hemisphere, with the same error in the other
-        const west = LON[k] >= 180;
-        m1[k] = OBS[k] + (west ? eps[k % (V / 2)] : 0);
-        m2[k] = OBS[k] + (west ? 0 : eps[k % (V / 2)]);
-      } else if (kind === "random") { // independent errors of the same size
+        const j = Math.floor(k / NLON), i = k % NLON, west = i >= NLON / 2;
+        const e = eps[j * (NLON / 2) + i % (NLON / 2)];
+        m1[k] = OBS[k] + (west ? e : 0);
+        m2[k] = OBS[k] + (west ? 0 : e);
+      } else { // independent errors of the same size
         m1[k] = OBS[k] + e1;
-        m2[k] = OBS[k] + 2 * e2;
-      } else { // model 2 has larger errors than model 1
-        m1[k] = OBS[k] + e1;
-        m2[k] = OBS[k] + 3 * e2;
+        m2[k] = OBS[k] + e2;
       }
     }
     return { m1: m1, m2: m2 };
   }
 
-  function mse(m) {
+  function mse(m) { // area-weighted
     let s = 0;
-    for (let k = 0; k < V; k++) s += (m[k] - OBS[k]) ** 2;
-    return s / V;
+    for (let k = 0; k < V; k++) s += AREA[k] * (m[k] - OBS[k]) ** 2;
+    return s;
   }
 
   // Individual performance weighting: weights proportional to the inverse
-  // mean squared error of each model, as in Sect. 5 of the paper
+  // area-weighted mean squared error of each model, as in Sect. 5 of the paper
   function ipw(sc, n2) {
     const p1 = 1 / mse(sc.m1), p2 = 1 / mse(sc.m2);
     const z = p1 + n2 * p2;
@@ -105,8 +113,9 @@
   }
 
   // Ensemble performance weighting with a Dirichlet(1/N) prior, a Gaussian
-  // likelihood of the weighted mean and an inverse-gamma(2, 3) prior on the
-  // error variance. The weighted mean depends only on w1 and on the summed
+  // likelihood of the weighted mean with variance sigma^2 / area weight, and
+  // an inverse-gamma(2, 3) prior on sigma^2, as in the code of the paper.
+  // The weighted mean depends only on w1 and on the summed
   // weight of the copies, w2 = 1 - w1, so the posterior reduces to one
   // dimension. Its prior is Beta(1/N, n2/N) by the aggregation property of
   // the Dirichlet distribution, and the variance is integrated out
@@ -116,7 +125,7 @@
     let A = 0, B = 0, C = 0;
     for (let k = 0; k < V; k++) {
       const r = OBS[k] - sc.m2[k], d = sc.m1[k] - sc.m2[k];
-      A += d * d; B += r * d; C += r * r;
+      A += AREA[k] * d * d; B += AREA[k] * r * d; C += AREA[k] * r * r;
     }
     const lp = new Array(K);
     let mx = -Infinity;
@@ -186,9 +195,16 @@
   // -------------------------------------------------------------------
   const SCENARIOS = [
     { key: "pattern", name: "Complementary errors", note: "Each model is exact in one hemisphere and has the same error in the other." },
-    { key: "random", name: "Independent errors", note: "Both models have random errors of the same size." },
-    { key: "worse", name: "Model 2 is worse", note: "Model 2 has random errors about 1.5 times larger than model 1." },
+    { key: "random", name: "Independent errors", note: "Both models have independent random errors of the same size everywhere." },
+    { key: "real", name: "Two CMIP6 models", note: "Model 1 is AWI-CM-1-1-MR and model 2 is CESM2-WACCM." },
   ];
+
+  // Area-weighted mean over all latitudes at each longitude (for plotting only)
+  function meanOverLat(vals) {
+    const out = new Array(NLON).fill(0);
+    for (let k = 0; k < V; k++) out[k % NLON] += AREA[k] * NLON * vals[k];
+    return out;
+  }
 
   function initHero(container) {
     container.innerHTML =
@@ -202,7 +218,7 @@
             '<output class="we-n2-out"></output></label>' +
         '</div>' +
         '<div class="we-data">' +
-          '<p class="we-fig-title">Observations and the two models</p>' +
+          '<p class="we-fig-title">Observations and the two models <span>(temperature anomaly in °C, mean over all latitudes)</span></p>' +
           '<div class="we-data-fig"></div>' +
           '<div class="we-legend">' +
             '<span><i class="we-key we-key-obs"></i>Observations</span>' +
@@ -241,17 +257,20 @@
 
     function drawData() {
       const sc = scenario();
+      const obs = meanOverLat(OBS), m1 = meanOverLat(sc.m1), m2 = meanOverLat(sc.m2);
+      const all = obs.concat(m1, m2);
+      const y0 = Math.floor(Math.min.apply(null, all) / 5) * 5, y1 = Math.ceil(Math.max.apply(null, all) / 5) * 5;
       clear(dataFig);
       const W = dataFig.clientWidth, H = Math.round(Math.max(150, Math.min(210, W * 0.42)));
       const svg = el("svg", { class: "we-svg", width: W, height: H, viewBox: "0 0 " + W + " " + H,
-        role: "img", "aria-label": "Observed field and the two toy models along longitude" }, dataFig);
+        role: "img", "aria-label": "Observed field and the two models along longitude" }, dataFig);
       const m = { l: 34, r: 16, t: 8, b: 26 };
       const X = function (x) { return m.l + x / 360 * (W - m.l - m.r); };
-      const Y = function (y) { return m.t + (25 - y) / 50 * (H - m.t - m.b); };
-      [-20, 0, 20].forEach(function (v) {
+      const Y = function (y) { return m.t + (y1 - y) / (y1 - y0) * (H - m.t - m.b); };
+      for (let v = y0; v <= y1; v += 5) {
         el("line", { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), class: "we-grid" }, svg);
         el("text", { x: m.l - 6, y: Y(v) + 4, class: "we-tick", "text-anchor": "end" }, svg).textContent = v;
-      });
+      }
       [0, 90, 180, 270, 360].forEach(function (v) {
         el("text", { x: X(v), y: H - 8, class: "we-tick", "text-anchor": "middle" }, svg).textContent = v + "°";
       });
@@ -262,12 +281,12 @@
       }
       function line(vals, cls) {
         let d = "";
-        for (let k = 0; k < V; k++) d += (k ? "L" : "M") + X(LON[k]).toFixed(1) + "," + Y(vals[k]).toFixed(1);
+        for (let i = 0; i < NLON; i++) d += (i ? "L" : "M") + X(DATA.lon[i]).toFixed(1) + "," + Y(vals[i]).toFixed(1);
         el("path", { d: d, class: "we-line " + cls }, svg);
       }
-      line(sc.m2, "we-line-m2");
-      line(sc.m1, "we-line-m1");
-      line(OBS, "we-line-obs");
+      line(m2, "we-line-m2");
+      line(m1, "we-line-m1");
+      line(obs, "we-line-obs");
     }
 
     function drawBars(n2) {
@@ -281,10 +300,10 @@
       rows.forEach(function (row) {
         const div = document.createElement("div");
         div.className = "we-bar";
-        const m2 = n2 === 1 ? "model 2 " + pct(row.w.w2)
-          : n2 + " copies of model 2 " + pct(row.w.w2) + " (" + pct(row.w.copy) + " each)";
+        const m2 = n2 === 1 ? "Model 2: " + pct(row.w.w2)
+          : "Model 2 (" + n2 + " copies): " + pct(row.w.w2) + " (" + pct(row.w.copy) + " each)";
         div.innerHTML = '<p class="we-bar-title"><span>' + row.title + ' <span class="we-light">(' + row.tag + ')</span></span>' +
-          '<span class="we-bar-sum"><b class="we-txt-m1">Model 1 ' + pct(row.w.w1) + '</b> · <b class="we-txt-m2">' + m2 + '</b></span></p>';
+          '<span class="we-bar-sum"><b class="we-txt-m1">Model 1: ' + pct(row.w.w1) + '</b> · <b class="we-txt-m2">' + m2 + '</b></span></p>';
         bars.appendChild(div);
         const svg = el("svg", { class: "we-svg", width: W, height: BH, viewBox: "0 0 " + W + " " + BH, role: "img",
           "aria-label": row.tag + ": model 1 " + pct(row.w.w1) + ", all copies of model 2 " + pct(row.w.w2) }, div);
@@ -337,13 +356,12 @@
     return a.toFixed(a >= 0.01 ? 3 : 4);
   }
 
-  // Color of a model by its value (low = blue, high = orange)
+  // Color of a model by its value (viridis: low = purple, high = yellow)
+  const VIRIDIS = [[68, 1, 84], [59, 82, 139], [33, 145, 140], [94, 201, 98], [253, 231, 37]];
   function valueColor(v) {
-    const t = Math.min(1, Math.max(0, (v - 1) / 4));
-    const lo = [58, 120, 181], mid = [214, 220, 224], hi = [212, 104, 61];
-    const c = t < 0.5
-      ? lo.map(function (x, i) { return Math.round(x + (mid[i] - x) * t * 2); })
-      : mid.map(function (x, i) { return Math.round(x + (hi[i] - x) * (t - 0.5) * 2); });
+    const t = Math.min(1, Math.max(0, (v - 1) / 4)) * (VIRIDIS.length - 1);
+    const i = Math.min(VIRIDIS.length - 2, Math.floor(t));
+    const c = VIRIDIS[i].map(function (x, j) { return Math.round(x + (VIRIDIS[i + 1][j] - x) * (t - i)); });
     return "rgb(" + c.join(",") + ")";
   }
 
@@ -358,12 +376,12 @@
           '<button type="button" class="we-btn we-btn-quiet we-resample">Draw new samples</button>' +
         '</div>' +
         '<div class="we-samples">' +
-          '<p class="we-fig-title">Four weight vectors drawn from the prior <span>(one slice per model)</span></p>' +
+          '<p class="we-fig-title">Four weight vectors drawn from the prior <span>(one slice per model, colored by its value as on the axis below)</span></p>' +
           '<div class="we-samples-fig"></div>' +
         '</div>' +
       '</div>' +
       '<div class="we-hist">' +
-        '<p class="we-fig-title">Weighted mean of the ensemble <span>(' + NSAMP.toLocaleString("en") + ' prior samples)</span></p>' +
+        '<p class="we-fig-title">Weighted means of ' + NSAMP.toLocaleString("en") + ' weight vectors drawn from the prior</p>' +
         '<div class="we-hist-fig"></div>' +
         '<div class="we-legend">' +
           '<span><i class="we-key we-key-hist"></i>Prior-weighted mean</span>' +
@@ -381,7 +399,7 @@
     const histFig = container.querySelector(".we-hist-fig");
     const outcome = container.querySelector(".we-outcome");
     const sortedModels = MODELS.slice().sort(function (a, b) { return a - b; });
-    let alpha = 1 / NM, seed = 1, samples = null, means = null;
+    let alpha = 1 / NM, seed = 1, samples = null, means = null, meanBig = 0, shareSingle = 0;
 
     PRESETS.forEach(function (p) {
       const b = document.createElement("button");
@@ -396,17 +414,22 @@
       const rand = rng(seed * 7919 + Math.round(Math.log10(alpha) * 1000));
       samples = [];
       means = new Float64Array(NSAMP);
+      let nBig = 0, nSingle = 0;
       for (let s = 0; s < NSAMP; s++) {
         const w = dirichlet(NM, alpha, rand);
         if (s < NSHOW) samples.push(w);
         means[s] = weightedMean(w);
+        nBig += w.filter(function (v) { return v > 0.01; }).length;
+        if (Math.max.apply(null, w) > 0.9) nSingle++;
       }
       means.sort();
+      meanBig = nBig / NSAMP;
+      shareSingle = nSingle / NSAMP;
     }
 
     function drawSamples() {
       clear(sampFig);
-      const W = sampFig.clientWidth - 20, RH = 22, GAP = 9, LW = 64;
+      const W = sampFig.clientWidth - 20, RH = 32, GAP = 9, LW = 124;
       const H = NSHOW * (RH + GAP) - GAP;
       const svg = el("svg", { class: "we-svg", width: W, height: H, viewBox: "0 0 " + W + " " + H, role: "img",
         "aria-label": "Four sampled weight vectors, each shown as a bar divided among the 38 models" }, sampFig);
@@ -414,22 +437,25 @@
       samples.forEach(function (w, r) {
         const y = r * (RH + GAP);
         let x = 0;
-        // Order the slices by model value so the colors read from blue to orange
+        // Order the slices by model value so the colors read from purple to yellow
         const order = MODELS.map(function (_, i) { return i; }).sort(function (a, b) { return MODELS[a] - MODELS[b]; });
         order.forEach(function (i) {
           const wd = w[i] * BW;
           if (wd > 0.05) el("rect", { x: x, y: y, width: wd, height: RH, fill: valueColor(MODELS[i]), class: "we-slice" }, svg);
           x += wd;
         });
-        el("text", { x: W, y: y + RH / 2 + 4, class: "we-tick", "text-anchor": "end" }, svg).textContent =
-          "mean " + weightedMean(w).toFixed(2);
+        const nBig = w.filter(function (v) { return v > 0.01; }).length;
+        el("text", { x: W, y: y + RH / 2 - 3, class: "we-tick", "text-anchor": "end" }, svg).textContent =
+          nBig + (nBig === 1 ? " model" : " models") + " > 1%";
+        el("text", { x: W, y: y + RH / 2 + 12, class: "we-tick", "text-anchor": "end" }, svg).textContent =
+          "weighted mean " + weightedMean(w).toFixed(2);
       });
     }
 
     function drawHist() {
       clear(histFig);
-      const W = histFig.clientWidth, H = Math.round(Math.max(170, Math.min(230, W * 0.3)));
-      const m = { l: 36, r: 10, t: 10, b: 36 };
+      const W = histFig.clientWidth, H = Math.round(Math.max(178, Math.min(238, W * 0.3 + 8)));
+      const m = { l: 36, r: 10, t: 10, b: 44 };
       const X0 = -1, X1 = 7, NB = 160, bw = (X1 - X0) / NB;
       const counts = new Array(NB).fill(0);
       for (let s = 0; s < NSAMP; s++) {
@@ -453,9 +479,9 @@
         el("text", { x: m.l - 6, y: Y(v) + 4, class: "we-tick", "text-anchor": "end" }, svg).textContent = +v.toFixed(1);
       }
       for (let v = X0; v <= X1; v++) {
-        el("text", { x: X(v), y: H - m.b + 16, class: "we-tick", "text-anchor": "middle" }, svg).textContent = v;
+        el("text", { x: X(v), y: H - m.b + 22, class: "we-tick", "text-anchor": "middle" }, svg).textContent = v;
       }
-      el("text", { x: (m.l + W - m.r) / 2, y: H - 4, class: "we-ax-title", "text-anchor": "middle" }, svg).textContent = "Value";
+      el("text", { x: (m.l + W - m.r) / 2, y: H - 4, class: "we-ax-title", "text-anchor": "middle" }, svg).textContent = "Value (colors as in the bars above)";
       el("text", { x: 0, y: 0, class: "we-ax-title", "text-anchor": "middle",
         transform: "translate(11," + ((m.t + H - m.b) / 2) + ") rotate(-90)" }, svg).textContent = "Density";
 
@@ -474,15 +500,20 @@
       MODELS.forEach(function (v) {
         el("line", { x1: X(v), x2: X(v), y1: Y(0) - 9, y2: Y(0), class: "we-rug" }, svg);
       });
-      el("line", { x1: X(MMM), x2: X(MMM), y1: Y(0) - 14, y2: Y(0) + 4, class: "we-mmm" }, svg);
+      // Color scale of the slices in the bars above
+      for (let v = X0; v < X1; v += 0.05) {
+        el("rect", { x: X(v), y: Y(0) + 1, width: X(v + 0.05) - X(v) + 0.5, height: 7, fill: valueColor(v + 0.025) }, svg);
+      }
+      el("line", { x1: X(MMM), x2: X(MMM), y1: Y(0) - 14, y2: Y(0) + 8, class: "we-mmm" }, svg);
       el("line", { x1: m.l, x2: W - m.r, y1: Y(0), y2: Y(0), class: "we-ax" }, svg);
 
       const r5 = quantile(sortedModels, 0.05), r95 = quantile(sortedModels, 0.95);
       const ratio = (q95 - q05) / (r95 - r5);
       outcome.innerHTML = "90% of the prior-weighted means lie between <b>" + q05.toFixed(2) + "</b> and <b>" + q95.toFixed(2) +
-        "</b> (shaded), which covers <b>" + Math.round(100 * ratio) + "%</b> of the 5–95% range of the models themselves (" +
-        r5.toFixed(2) + "–" + r95.toFixed(2) + ")." +
-        (ratio < 0.4 ? " The prior alone has already narrowed the ensemble, before any observations are used." : "");
+        "</b> (shaded). On average, <b>" + meanBig.toFixed(1) + "</b> models receive a weight above 1%, and in <b>" +
+        Math.round(100 * shareSingle) + "%</b> of the draws a single model receives more than 90%." +
+        (ratio < 0.4 ? " The prior alone has already narrowed the ensemble, before any observations are used." : "") +
+        (shareSingle >= 0.5 ? " Most draws therefore select a single model rather than average several." : "");
     }
 
     function draw() {
