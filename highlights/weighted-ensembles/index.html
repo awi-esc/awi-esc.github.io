@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-10-28">
-<meta name="description" content="Choosing weights for the performance of the weighted ensemble, rather than of each model, treats duplicate models correctly without a separate independence weight.">
+<meta name="description" content="Choosing weights for the performance of the weighted ensemble, rather than of each model, accounts for model dependence without a subjective independence weight and uses the information from all models.">
 
-<title>Weighting the ensemble as a whole accounts for model dependence – AWI Earth System Complexity</title>
+<title>Better climate projections from weighting the whole ensemble – AWI Earth System Complexity</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -177,13 +177,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Weighting the ensemble as a whole accounts for model dependence</h1>
-<p class="subtitle lead">Climate models share code and assumptions, so a multi-model ensemble is not a set of independent samples. Weighting methods therefore often combine a performance weight with a separate independence weight. In a <a href="https://doi.org/10.5194/esd-17-1589-2026">new paper</a> led by <a href="https://github.com/brittaGrusdt">Britta Grusdt</a>, we formulate the common weighting approaches in one Bayesian framework. If the weights are chosen for the performance of the weighted ensemble rather than for each model individually, dependence between models is accounted for implicitly, with no further assumptions. The prior on the weights, however, strongly controls how much the uncertainty of the ensemble is reduced, and should always be reported.</p>
+<h1 class="title">Better climate projections from weighting the whole ensemble</h1>
+<p class="subtitle lead">Climate models share code and assumptions, so a multi-model ensemble is not a set of independent samples. Weighting methods therefore often combine a performance weight with a separate independence weight. However, determining which models are dependent is difficult, and any measure of independence involves subjective choices. In a <a href="https://doi.org/10.5194/esd-17-1589-2026">new paper</a> led by <a href="https://github.com/brittaGrusdt">Britta Grusdt</a>, we formulate the common weighting approaches in one Bayesian framework. If the weights are chosen for the performance of the weighted ensemble rather than for each model individually, dependence between models is accounted for implicitly. No independence weight is needed, and the weighted ensemble draws on the information from all models. Still, the prior on the weights strongly controls how much the uncertainty of the ensemble is reduced, and should always be reported.</p>
 </div>
 
 <div>
   <div class="description">
-    Choosing weights for the performance of the weighted ensemble, rather than of each model, treats duplicate models correctly without a separate independence weight.
+    Choosing weights for the performance of the weighted ensemble, rather than of each model, accounts for model dependence without a subjective independence weight and uses the information from all models.
   </div>
 </div>
 
