@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+<style>text{font-family:Helvetica,Arial,sans-serif;font-weight:600}.t{font-size:38px;fill:#18576e}.s{font-size:28px;font-weight:400;fill:#6b7f88}.l{font-size:32px;fill:#fff}</style>
+<rect width="1200" height="675" fill="#f1f5f7"/>
+<text x="80" y="150" class="t">Weighting each model individually</text>
+<rect x="80" y="175" width="173.3" height="110" fill="#d4683d"/><rect x="253.3" y="175" width="173.3" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="426.7" y="175" width="173.3" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="600.0" y="175" width="173.3" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="773.3" y="175" width="173.3" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="946.7" y="175" width="173.3" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><text x="100" y="243" class="l">M1 17%</text>
+<text x="80" y="400" class="t">Weighting the ensemble as a whole</text>
+<rect x="80" y="425" width="517.9" height="110" fill="#d4683d"/><rect x="597.9" y="425" width="104.4" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="702.3" y="425" width="104.4" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="806.8" y="425" width="104.4" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="911.2" y="425" width="104.4" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><rect x="1015.6" y="425" width="104.4" height="110" fill="#2fa4b8" stroke="#fff" stroke-width="4"/><text x="100" y="493" class="l">M1 50%</text>
+<text x="80" y="600" class="s">Model 1 and five identical copies of model 2</text>
+</svg>

@@ -2,12 +2,14 @@
   {
     "listing": "/highlights/index.html",
     "items": [
+      "/highlights/weighted-ensembles/index.html",
       "/highlights/rtip-antarctica/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/highlights/weighted-ensembles/index.html",
       "/highlights/rtip-antarctica/index.html"
     ]
   }
